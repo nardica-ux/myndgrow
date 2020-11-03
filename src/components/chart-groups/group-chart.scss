@@ -1,0 +1,40 @@
+.group-chart-line {
+  width: 100%;
+  position: relative;
+  min-height: 60px;
+  margin: 8px auto;
+  padding: 8px 0;
+  .group-comments {
+    transform: translateY(60px);
+    margin-top: 40px;
+    p:hover {
+      color: black;
+    }
+  }
+
+  h4 {
+    margin: 0;
+    animation: unfold 0.5s forwards;
+    transform-origin: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .group-chart-bar {
+    position: absolute;
+    height: 32px;
+    border-radius: 8px;
+    right: 0;
+    top: 36px;
+    animation: unfold 0.5s forwards;
+    transform-origin: right;
+  }
+}
+@keyframes unfold {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

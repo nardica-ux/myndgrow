@@ -1,0 +1,18 @@
+.page-container {
+  width: 100%;
+  margin: 0;
+  padding: 10px 2%;
+  background-color: whitesmoke;
+  h2 {
+    font-weight: 100;
+    width: 96%;
+    color: grey;
+    text-align: left;
+    text-transform: uppercase;
+    &:after {
+      display: block;
+      content: "";
+      border-bottom: 1px solid grey;
+    }
+  }
+}

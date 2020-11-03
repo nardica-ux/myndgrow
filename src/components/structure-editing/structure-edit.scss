@@ -1,0 +1,12 @@
+.category-chip {
+  display: flex;
+  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  & span {
+    font-size: 1rem;
+    margin-left: 10;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}

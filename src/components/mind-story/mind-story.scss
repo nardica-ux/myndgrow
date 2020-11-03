@@ -1,0 +1,45 @@
+.use-story {
+  text-align: left;
+  width: 96%;
+  max-width: 100%;
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  & div {
+    width: 47%;
+    margin-left: 10px;
+    overflow: hidden;
+    padding: 6px;
+    flex-grow: 5;
+  }
+  & img {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    height: auto;
+    vertical-align: center;
+    text-align: center;
+    min-width: 300;
+    border-radius: 12;
+    box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .use-story {
+    flex-direction: column;
+    width: 90%;
+    & div {
+      width: 97%;
+    }
+    & img {
+      width: 90%;
+      margin: auto;
+    }
+  }
+}

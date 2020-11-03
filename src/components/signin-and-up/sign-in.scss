@@ -1,0 +1,41 @@
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+.active-tab {
+  color: royalblue;
+  border-bottom: 1px solid royalblue;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.inactive-tab {
+  color: seagreen;
+  margin-bottom: 30px;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  transition: border 0.5s;
+  border-bottom: 1px solid royalblue;
+  background-color: whitesmoke;
+
+  &:hover {
+    border-bottom: 1px solid seagreen;
+    font-weight: 500;
+  }
+}
+.half-card {
+  width: 45%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

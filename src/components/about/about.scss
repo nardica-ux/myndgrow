@@ -1,0 +1,29 @@
+.about-subtitle2 {
+  color: darkgoldenrod;
+  font-size: 1.4rem;
+  margin: 0px;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: left;
+  vertical-align: center;
+  min-width: 180px;
+}
+.about-pict {
+  width: 200px;
+  overflow: hidden;
+  height: 200px;
+}
+.about-icon-title {
+  width: 55px;
+  margin-bottom: -18px;
+  height: auto;
+  margin-right: 10px;
+}
+.about-link {
+  color: royalblue;
+  cursor: pointer;
+  transition: color 0.3s;
+  &:hover {
+    color: yellowgreen;
+  }
+}

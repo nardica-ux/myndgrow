@@ -1,0 +1,28 @@
+import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import GroupChipContainer from "../app-small-components/group-chip-container";
+import ErrorBoundary from "../error-boundary/error-boundary-component";
+import GraphCard from "../graph-card/graph-card-component";
+
+const Dashboard = ({ user }) => {
+  return user ? (
+    <div className="content-block">
+      <h3>My categories</h3>
+      <GroupChipContainer />
+      <ErrorBoundary>
+        <GraphCard num={3} />
+        <GraphCard num={7} groupped={false} />
+      </ErrorBoundary>
+    </div>
+  ) : (
+    <>
+      <Redirect to="/about" />
+    </>
+  );
+};
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(Dashboard);
