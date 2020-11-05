@@ -11,6 +11,13 @@
     text-decoration: underline;
   }
 }
+.diagram-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+}
 .dia-card {
   display: flex;
   align-items: flex-end;
@@ -29,6 +36,34 @@
 .dia-chartbar {
   margin: 1px;
   border-radius: 4px;
+  border: 2px solid white;
+  transition: border-color 0.3s;
   width: 8px;
+  margin-top: -30px;
   content: "";
+  cursor: pointer;
+  &:hover {
+    border-color: yellowgreen;
+  }
+  & .chart-points {
+    margin-top: -30px;
+  }
+  & span {
+    opacity: 0;
+    min-width: 100px;
+    width: 20vw;
+    transition: opacity 0.3s 0.1s;
+    position: absolute;
+    box-shadow: 3px 3px 8px (rgba(0, 0, 0, 0.3));
+    bottom: 20;
+    right: 0;
+    background-color: rgba(256, 256, 256, 0.9);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 10;
+  }
+  &:hover span {
+    display: "block";
+    opacity: 1;
+  }
 }

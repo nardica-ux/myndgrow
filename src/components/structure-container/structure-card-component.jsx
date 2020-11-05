@@ -29,7 +29,7 @@ const StructureCard = ({ num, editGroup, categories, fetching }) => {
               borderRadius: 4,
               float: "right",
             }}
-            onClick={() => editGroup(categories[num])}
+            onClick={() => editGroup({ ...categories[num], status: "edit" })}
           />
           {name}
         </h4>

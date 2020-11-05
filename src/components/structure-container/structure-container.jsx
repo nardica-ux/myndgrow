@@ -11,11 +11,27 @@ import FinishCategoryForm from "../structure-editing/finish-category-popup";
 
 const StructureBlock = ({ categories }) => {
   const [openGroup, setGroup] = useState(false);
+
+  function getElement() {
+    switch (openGroup.status) {
+      default:
+        break;
+      case "structure":
+        return <EditStructure editGroup={setGroup} />;
+      case "edit":
+        return <EditGroup group={openGroup} editGroup={setGroup} />;
+      case "completed":
+        return <FinishCategoryForm group={openGroup} editGroup={setGroup} />;
+      case "review":
+        return <div>start review</div>;
+    }
+  }
+
   return (
     <ErrorBoundary>
       <div style={{ width: "100%", position: "relative" }}>
         <AppButton
-          callFunc={() => setGroup(true)}
+          callFunc={() => setGroup({ status: "structure" })}
           toggleText={openGroup ? "Close" : "Manage Groups"}
         />
 
@@ -24,18 +40,19 @@ const StructureBlock = ({ categories }) => {
           getmodalclosed={setGroup}
           title={
             openGroup && openGroup.hasOwnProperty("name")
-              ? "Edit " + openGroup.name + " group"
+              ? "Edit " + openGroup.name + " category"
               : "Manage learning Structure"
           }
         >
-          {openGroup === true ? (
+          {getElement()}
+          {/* {openGroup === true ? (
             <EditStructure editGroup={setGroup} />
           ) : openGroup.hasOwnProperty("status") &&
             openGroup.status === "completed" ? (
             <FinishCategoryForm group={openGroup} editGroup={setGroup} />
           ) : (
             <EditGroup group={openGroup} editGroup={setGroup} />
-          )}
+          )} */}
         </AppModal>
       </div>
       <h3>Categories active</h3>

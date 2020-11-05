@@ -1,27 +1,46 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { groups } from "../app/groups";
+import SuccessStoryDiagram from "../success-stories/story-diagram";
+import AppButton from "../app-small-components/app-button-component";
 
 const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
-  // name, story[]
-  const [isPublic, setPublic] = useState(false);
-  const [storyChuncks, setStory] = useState({ [0]: "" });
-
-  const points = () => {
-    let points = [];
+  function points() {
+    let tracking = [];
     for (let date in entries) {
       for (let entry in entries[date]) {
-        if (entries[date][entry].group.own_id.group_id === group.own_id)
-          points.push(entries[date][entry].value);
+        let el = undefined;
+        if (
+          entries[date][entry].hasOwnProperty("group_id") &&
+          entries[date][entry].group_id === group.own_id
+        ) {
+          el = entries[date][entry];
+        } else if (entries[date][entry].group === group.name) {
+          el = entries[date][entry];
+        }
+        if (el) {
+          tracking.push({
+            points: parseInt(el.value),
+            text: el.text,
+            topic: [el.topic, parseInt(el.value)],
+          });
+        }
       }
     }
-    return points;
-  };
+    return tracking;
+  }
+  const [isPublic, setPublic] = useState(false);
+  const [storyChuncks, setStory] = useState({ [0]: "" });
+  const [results, setResults] = useState(points());
+  const [reviewStarted, startReview] = useState(false);
 
-  const diagram = {
+  const diagramInfo = (arr) => ({
     color: group.color,
-    topics: [...group.topics],
-    points: points(),
-  };
+    topics: [...group.sub_groups],
+    points: arr.map((el) => el.points),
+    topic_points: arr.map((el) => el.topic),
+    comments: arr.map((el) => el.text),
+  });
 
   const handleComplete = () => {
     const obj = {
@@ -31,19 +50,33 @@ const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
       published: isPublic,
       story: storyChuncks,
       img: "",
-      diagram,
-      comments: [],
+      diagram: diagramInfo(results),
+      comments: results.map((el) => el.text),
+      reactions: [],
     };
     console.log(obj);
   };
 
   return (
-    <div>
-      <button onClick={() => editGroup({ ...group, status: "active" })}>
-        Cancel
-      </button>
-      <button onClick={() => handleComplete()}>Complete</button>
-    </div>
+    <>
+      <h4 style={{ color: group.color }}>Completing {group.name} Review</h4>
+      <h1>Goal: {group.goal}</h1>
+      <h4>Main Question: {group.question}</h4>
+      <SuccessStoryDiagram diadata={diagramInfo(results)} scale={3} />
+
+      <AppButton
+        color={group.color}
+        callFunc={() => editGroup({ ...group, status: "edit" })}
+        toggleText="Cancel"
+      />
+
+      <AppButton
+        color={"tomato"}
+        callFunc={() => editGroup({ ...group, status: "review" })}
+        toggleText={"Start Review"}
+        styleObj={{ float: "right" }}
+      />
+    </>
   );
 };
 
