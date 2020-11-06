@@ -5,6 +5,7 @@ import StructureBlock from "../structure-container/structure-container";
 import AboutContainer from "../about/about-container";
 import AddDayProgress from "../entry-components/entry-add-page";
 import SuccessStoryContainer from "../success-stories/success-story-container";
+import ReflectCategoryForm from "../structure-completing/reflect-category-popup";
 
 export const pages = [
   {
@@ -31,6 +32,11 @@ export const pages = [
     name: "success stories",
     path: "/success-stories",
     el: <SuccessStoryContainer />,
+  },
+  {
+    name: "review category",
+    path: "/review-reflect",
+    el: <ReflectCategoryForm />,
   },
   {
     name: "contact",

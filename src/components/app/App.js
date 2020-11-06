@@ -13,10 +13,12 @@ import {
   init_categories_start,
   init_categories,
 } from "../../redux/categories/category-actions";
+import { init_stories } from "../../redux/success-stories/story-actions";
 
 import { pages } from "./pages";
 import Header from "../header/header-container";
 import PageContainer from "../../pages/page-container";
+import { stories } from "../success-stories/story-sample";
 
 function App({
   set_user,
@@ -26,6 +28,7 @@ function App({
   init_entries,
   init_categories_start,
   init_categories,
+  init_stories,
 }) {
   let unsubscribeFromAuth = null;
 
@@ -34,10 +37,10 @@ function App({
       if (user && !entries.entries) {
         await refresh_entries_redux(user);
         await init_categories_start(user.own_id);
+        init_stories(stories);
       }
     }
     fetchData();
-    // if (!user && entries.entries) init_entries([]);
 
     unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -86,6 +89,7 @@ const mapDispatchToProps = (dispatch) => {
     init_entries: (obj) => dispatch(init_entries(obj)),
     init_categories_start: (id) => dispatch(init_categories_start(id)),
     init_categories: (id) => dispatch(init_categories(id)),
+    init_stories: (arr) => dispatch(init_stories(arr)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

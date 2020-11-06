@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { groups } from "../app/groups";
+import { add_story_draft } from "../../redux/success-stories/story-actions";
 import SuccessStoryDiagram from "../success-stories/story-diagram";
 import AppButton from "../app-small-components/app-button-component";
 
-const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
+const ReviewCategoryForm = ({ group, editGroup, entries, add_story_draft }) => {
   function points() {
     let tracking = [];
     for (let date in entries) {
@@ -29,10 +29,8 @@ const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
     }
     return tracking;
   }
-  const [isPublic, setPublic] = useState(false);
-  const [storyChuncks, setStory] = useState({ [0]: "" });
+
   const [results, setResults] = useState(points());
-  const [reviewStarted, startReview] = useState(false);
 
   const diagramInfo = (arr) => ({
     color: group.color,
@@ -41,21 +39,6 @@ const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
     topic_points: arr.map((el) => el.topic),
     comments: arr.map((el) => el.text),
   });
-
-  const handleComplete = () => {
-    const obj = {
-      name: user.displayName,
-      author_id: user.own_id,
-      ava: user.ava || "",
-      published: isPublic,
-      story: storyChuncks,
-      img: "",
-      diagram: diagramInfo(results),
-      comments: results.map((el) => el.text),
-      reactions: [],
-    };
-    console.log(obj);
-  };
 
   return (
     <>
@@ -72,8 +55,11 @@ const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
 
       <AppButton
         color={"tomato"}
-        callFunc={() => editGroup({ ...group, status: "review" })}
-        toggleText={"Start Review"}
+        callFunc={() => {
+          add_story_draft(diagramInfo(results));
+          editGroup({ ...group, status: "review" });
+        }}
+        toggleText={"Write Review"}
         styleObj={{ float: "right" }}
       />
     </>
@@ -82,7 +68,11 @@ const FinishCategoryForm = ({ group, editGroup, user, entries }) => {
 
 const mapStateToProps = (state) => ({
   entries: state.entries.entries,
-  user: state.user.user,
 });
+const mapDispatchToProps = (dispacth) => {
+  return {
+    add_story_draft: (obj) => dispacth(add_story_draft(obj)),
+  };
+};
 
-export default connect(mapStateToProps)(FinishCategoryForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewCategoryForm);

@@ -25,6 +25,7 @@ const Header = ({ user }) => {
       defineCompact(false);
     }
   };
+  const forLoggedOnly = ["add entry", "review category"];
   const activeNotLogged = ["about", "contact", "success stories"];
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const Header = ({ user }) => {
     // window.addEventListener("resize", updateWindowDimensions);
     let nav = [];
     if (user) {
-      nav = pages.filter((el) => el.name !== "add entry");
+      nav = pages.filter((el) => !forLoggedOnly.includes(el.name));
     } else {
       nav = pages.filter((el) => activeNotLogged.includes(el.name));
     }
