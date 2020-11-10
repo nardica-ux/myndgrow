@@ -49,21 +49,21 @@ pipeline {
                     '''
                 }
             }
+        }
         stage('Rolling up Kube:dev'){
             when {
                     branch 'develop'
             }
             steps {
                 withKubeConfig([credentialsId: "myndgrow-kube-creds-dev", serverUrl: "https://192.168.86.26:16443"]){
-                    sh '''
-                    envsubst < "deploy/deployment-patch-src-dev.yaml" > "deploy/deployment-patch-out.yaml"
-                    kubectl patch deployment myndgrow \
-                            --patch "$(cat deploy/deployment-patch-out.yaml)"
-                    kubectl rollout restart deployment/myndgrow
-                    '''
+                    // sh '''
+                    // envsubst < "deploy/deployment-patch-src-dev.yaml" > "deploy/deployment-patch-out.yaml"
+                    // kubectl patch deployment myndgrow \
+                    //         --patch "$(cat deploy/deployment-patch-out.yaml)"
+                    // kubectl rollout restart deployment/myndgrow
+                    // '''
                 }
             }
-        }
-        }
+         }
     }
 }
