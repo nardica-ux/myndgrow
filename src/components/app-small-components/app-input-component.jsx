@@ -7,10 +7,8 @@ const AppInput = ({
   name,
   color,
   styleObj,
-  key,
   id,
   align,
-  size,
   placeHolder,
 }) => (
   <label htmlFor={name} style={{ display: "block" }}>

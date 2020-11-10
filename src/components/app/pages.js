@@ -5,7 +5,7 @@ import StructureBlock from "../structure-container/structure-container";
 import AboutContainer from "../about/about-container";
 import AddDayProgress from "../entry-components/entry-add-page";
 import SuccessStoryContainer from "../success-stories/success-story-container";
-import ReflectCategoryForm from "../structure-completing/reflect-category-popup";
+import ReflectCategoryForm from "../structure-completing/reflect-category";
 
 export const pages = [
   {

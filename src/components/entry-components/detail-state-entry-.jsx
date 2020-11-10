@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Bullet from "../app-small-components/bullet";
 import AppButton from "../app-small-components/app-button-component";
 import "./entry.scss";
 import { getGroup } from "../../functions/find-element";
 import { add_entry, update_entry } from "../../redux/entry-actions";
-
+import AppTextArea from "../app-small-components/textarea-component";
+import AppRangeInput from "../app-small-components/app-range-input";
 import ErrorBoundary from "../error-boundary/error-boundary-component";
 import "./entry-form.scss";
 
@@ -101,41 +101,6 @@ function EntryInputComponent({
     }
   };
 
-  const InputRange = (
-    <>
-      <label htmlFor="points">Points granted: </label>
-      <span style={{ color, fontSize: 25, margin: 16 }}>
-        <Bullet color={color} />
-        {points}
-      </span>
-      <input
-        type="range"
-        value={points}
-        name="points"
-        min="0"
-        max="15"
-        onChange={(e) => setPoints(e.target.value)}
-        style={{
-          backgroundColor: color,
-          border: `5px solid ${color}`,
-        }}
-      />
-    </>
-  );
-  const GetTextArea = (text) => (
-    <textarea
-      name="text"
-      rows="4"
-      cols="50"
-      placeholder={"enter the comments you have for the entry"}
-      value={text}
-      onChange={(e) => setText(e.target.value)}
-      style={{
-        border: `1px solid ${color}`,
-      }}
-    />
-  );
-
   return (
     <div className="entry-form">
       <ErrorBoundary>
@@ -148,9 +113,20 @@ function EntryInputComponent({
         </div>
 
         <div className="entry-main">
-          {InputRange}
+          {/* {InputRange}*/}
+          <AppRangeInput
+            name="grant-points"
+            getValue={points}
+            color={color}
+            callFunc={(e) => setPoints(e.target.value)}
+          />
           <br />
-          {GetTextArea(newText)}
+          <AppTextArea
+            callFunc={(e) => setText(e.target.value)}
+            name="describe-some-details"
+            color={color}
+            getValue={newText}
+          />
         </div>
         <div style={{ width: "100%" }}>
           <AppButton
