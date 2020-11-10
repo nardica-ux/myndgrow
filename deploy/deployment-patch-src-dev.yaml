@@ -1,0 +1,6 @@
+spec:
+    template:
+      spec:
+        containers:
+        - image: harbor.basicon.net/myndgrow/cvp-data-collector:b_${BUILD_NUMBER}
+          name: cvp-data-collector

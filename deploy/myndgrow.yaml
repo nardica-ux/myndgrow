@@ -1,0 +1,63 @@
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    tier: myndgrow
+    app: myndgrow
+  name: myndgrow
+spec:
+  ports:
+  - name: port-5000
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: myndgrow
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier: cvp
+  name: myndgrow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myndgrow
+  template:
+    metadata:
+      labels:
+        app: myndgrow
+    spec:
+      containers:
+      - image: harbor.basicon.net/myndgrow/myndgrow-dev:latest
+        imagePullPolicy: Always
+        name: myndgrow
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 20
+          timeoutSeconds: 30
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 20
+          timeoutSeconds: 30
+        resources:
+          limits:
+            cpu: "0.1"
+            memory: 1Gi
+          requests:
+            cpu: "0.1"
+            memory: 1Gi
+      restartPolicy: Always
+
