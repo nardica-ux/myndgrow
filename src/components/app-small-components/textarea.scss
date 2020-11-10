@@ -1,0 +1,14 @@
+textarea {
+  min-width: 280px;
+  min-height: 60px;
+  resize: vertical;
+  margin: 10px auto;
+  width: 96%;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: whitesmoke;
+  &:focus {
+    outline: none;
+    border-width: 3px;
+  }
+}

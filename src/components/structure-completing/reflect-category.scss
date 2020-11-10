@@ -1,0 +1,10 @@
+.reflect-story {
+  display: flex;
+  flex-wrap: wrap;
+  & p {
+    flex-basis: 30%;
+    flex-grow: 1;
+    min-width: 300px;
+    text-align: left;
+  }
+}

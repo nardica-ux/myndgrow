@@ -57,7 +57,7 @@ const EditStructure = ({
       />
       <span
         style={{ color: el.color }}
-        onClick={() => editGroup(categories[i])}
+        onClick={() => editGroup({ ...categories[i], status: "edit" })}
       >
         {el.name}
       </span>

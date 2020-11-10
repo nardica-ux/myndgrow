@@ -5,7 +5,7 @@ import Bullet from "../app-small-components/bullet";
 
 const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
   const [commentsShown, showComments] = useState(false);
-  const { color, topics, points, topic_points } = diadata;
+  const { color, sub_groups, points, topic_points } = diadata;
   let accumulatedPoints = (arr) => {
     let newArr = [arr[0]];
     for (let i = 1; i < arr.length; i++) newArr.push(arr[i] + newArr[i - 1]);
@@ -20,14 +20,14 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
   };
 
   const topicPoints = () => {
-    let topicsObj = {};
+    let sub_groupsObj = {};
     for (let topic of topic_points) {
-      topicsObj.hasOwnProperty(topic[0])
-        ? topicsObj[topic[0]].push(topic[1])
-        : (topicsObj[topic[0]] = [topic[1]]);
+      sub_groupsObj.hasOwnProperty(topic[0])
+        ? sub_groupsObj[topic[0]].push(topic[1])
+        : (sub_groupsObj[topic[0]] = [topic[1]]);
     }
-    console.log(topicsObj);
-    return topicsObj;
+    console.log(sub_groupsObj);
+    return sub_groupsObj;
   };
   const topicValues = topicPoints();
 
@@ -37,8 +37,8 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
         <h2 style={{ color }}> Result snapshot</h2>
         <p className="card-text">Points Total: {sum(points)}</p>
         <p className="card-text">
-          Topics:{" "}
-          {topics.map((el) => (
+          sub_groups:{" "}
+          {sub_groups.map((el) => (
             <span
               style={{ color, borderColor: color, display: "inline-block" }}
             >

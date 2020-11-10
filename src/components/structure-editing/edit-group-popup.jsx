@@ -67,7 +67,7 @@ const EditGroup = ({ group, update_category_start, editGroup }) => {
           color={group.color}
         />
         <AppButton
-          toggleText="Start Review"
+          toggleText="Review"
           color="tomato"
           callFunc={() => editGroup({ ...group, status: "startcomplete" })}
         />

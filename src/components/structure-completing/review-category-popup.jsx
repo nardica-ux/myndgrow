@@ -33,8 +33,7 @@ const ReviewCategoryForm = ({ group, editGroup, entries, add_story_draft }) => {
   const [results, setResults] = useState(points());
 
   const diagramInfo = (arr) => ({
-    color: group.color,
-    topics: [...group.sub_groups],
+    ...group,
     points: arr.map((el) => el.points),
     topic_points: arr.map((el) => el.topic),
     comments: arr.map((el) => el.text),
@@ -59,7 +58,7 @@ const ReviewCategoryForm = ({ group, editGroup, entries, add_story_draft }) => {
           add_story_draft(diagramInfo(results));
           editGroup({ ...group, status: "review" });
         }}
-        toggleText={"Write Review"}
+        toggleText={"Set completed"}
         styleObj={{ float: "right" }}
       />
     </>
