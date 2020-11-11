@@ -18,6 +18,7 @@ pipeline {
             steps('Build docker image'){
                 load "build.Jenkinsfile"
             }
+        }
         stage('Rolling up Kube:dev'){
             when {
                     branch 'develop'
@@ -48,6 +49,7 @@ pipeline {
             steps('Build docker image'){
                 load "build.Jenkinsfile"
             }
+        }
         stage('Rolling up Kube:uat'){
             when {
                     branch 'uat'
@@ -65,5 +67,3 @@ pipeline {
         }
         }
     }
-}
-}
