@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        }
+
         stage('Build for Kube:uat') {
             when {
                     branch 'uat'
