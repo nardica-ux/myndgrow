@@ -4,6 +4,7 @@ docker build \
     -t harbor.basicon.net/myndgrow/myndgrow-$APP_ENV:latest \
     -t harbor.basicon.net/myndgrow/myndgrow-$APP_ENV:b_${BUILD_NUMBER} \
     --build-arg BUILD_NUMBER=$BUILD_NUMBER \
+    --build-arg REACT_APP_ENV=$REACT_APP_ENV \
     --build-arg REACT_APP_FIREBASE_AUTH_DOMAIN=$REACT_APP_FIREBASE_AUTH_DOMAIN \
     --build-arg REACT_APP_FIREBASE_URL=$REACT_APP_FIREBASE_URL \
     --build-arg REACT_APP_FIREBASE_PROJECT_ID=$REACT_APP_FIREBASE_PROJECT_ID \
