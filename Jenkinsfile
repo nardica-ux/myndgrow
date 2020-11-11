@@ -16,7 +16,20 @@ pipeline {
                 REACT_APP_FIREBASE_STORAGE_BUCKET="myndgrow.appspot.com"
             }
             steps('Build docker image'){
-                load "build.Jenkinsfile"
+                withCredentials([
+                usernamePassword(
+                    credentialsId: 'harbor-creds',
+                    usernameVariable: 'HARBOR_USER',
+                    passwordVariable: 'HARBOR_PWD'),
+                string(credentialsId: "firebase-messenging-sender-id",
+                    variable: "REACT_APP_FIREBASE_MESSENGING_SENDER_ID"),
+                string(credentialsId: "firebase-api-key",
+                    variable: "REACT_APP_FIREBASE_API_KEY"),
+                string(credentialsId: "firebase-app-id",
+                    variable: "REACT_APP_FIREBASE_APP_ID")],)
+                {
+                    load "build.Jenkinsfile"
+                }
             }
         }
         stage('Rolling up Kube:dev'){
