@@ -62,7 +62,7 @@ const Header = ({ user }) => {
           compact={compact}
           toggleOpenNav={toggleOpenNav}
         />
-
+        <div>Env={process.env.REACT_APP_ENV}, build={process.env.REACT_APP_BUILD_NUM}</div>
         {open === "user" ? null : (
           <HeaderNavBlock
             toggleOpenNav={toggleOpenNav}
