@@ -4,5 +4,5 @@ spec:
     template:
       spec:
         containers:
-        - image: docker.apple.com/vvs-uat/cvp-data-collector:b_${BUILD_NUMBER}
+        - image: docker.apple.com/vvs-uat/myndgrow-uat:b_${BUILD_NUMBER}
           name: cvp-data-collector
