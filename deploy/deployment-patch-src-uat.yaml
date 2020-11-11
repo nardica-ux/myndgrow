@@ -1,8 +1,6 @@
-# DEV Environment
-# Deployment patch file template to update container image with new build accordingly
 spec:
     template:
       spec:
         containers:
-        - image: docker.apple.com/vvs-uat/myndgrow-uat:b_${BUILD_NUMBER}
-          name: cvp-data-collector
+        - image: harbor.basicon.net/myndgrow/myndgrow-uat:b_${BUILD_NUMBER}
+          name: myndgrow

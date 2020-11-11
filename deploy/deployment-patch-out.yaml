@@ -1,8 +1,0 @@
-# DEV Environment
-# Deployment patch file template to update container image with new build accordingly
-spec:
-    template:
-      spec:
-        containers:
-        - image: docker.apple.com/vvs-uat/cvp-data-collector:b_LOCAL
-          name: cvp-data-collector

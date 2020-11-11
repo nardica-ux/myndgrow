@@ -3,4 +3,4 @@ spec:
       spec:
         containers:
         - image: harbor.basicon.net/myndgrow/myndgrow-dev:b_${BUILD_NUMBER}
-          name: cvp-data-collector
+          name: myndgrow
