@@ -45,5 +45,8 @@ RUN npm install -g serve
 EXPOSE 5000
 WORKDIR /app
 COPY --from=builder /app/build ./build
+ARG BUILD_NUMBER
+ENV BUILD_NUMBER=${BUILD_NUMBER}
+ENV REACT_APP_BUILD_NUM=${BUILD_NUMBER}
 
 CMD ["serve", "-s","build"]
