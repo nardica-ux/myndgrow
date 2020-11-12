@@ -6,10 +6,8 @@ const PageContainer = ({ el, title }) => {
 
   return (
     <div className="page-container">
-      <h2>
-        {title}
-        <span style={{ float: "right" }}>{date}</span>
-      </h2>
+      <h2>{title}</h2>
+      <span className="page-header-right">{date}</span>
       {el}
     </div>
   );

@@ -1,10 +1,18 @@
-.reflect-story {
-  display: flex;
-  flex-wrap: wrap;
-  & p {
-    flex-basis: 30%;
-    flex-grow: 1;
-    min-width: 300px;
-    text-align: left;
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 200;
+  text-align: left;
+  margin-left: 10px;
+}
+.category-detail {
+  margin-left: 10px;
+  font-size: 1.3rem;
+  text-align: left;
+}
+@media screen and (max-width: 700px) {
+  .table-form {
+    & td {
+      display: block;
+    }
   }
 }

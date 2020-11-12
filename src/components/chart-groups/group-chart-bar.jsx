@@ -40,7 +40,12 @@ const GroupChartBar = ({
           {name} <ColorBullet color={color} />
           {groupTotal}
         </span>
-        <ToggleThing state={show} toggleShow={toggleShow} size={"small"} />
+        <ToggleThing
+          state={show}
+          toggleShow={toggleShow}
+          size={"small"}
+          label={"show notes"}
+        />
       </h4>
       {renderChart}
       {show ? (

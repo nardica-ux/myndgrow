@@ -9,7 +9,7 @@ import storyReducer from "./success-stories/story-reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user", "entries", "categories"],
+  whitelist: ["user", "entries", "categories", "stories"],
 };
 
 const rootReducer = combineReducers({

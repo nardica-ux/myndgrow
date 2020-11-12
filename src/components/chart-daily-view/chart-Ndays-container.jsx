@@ -2,7 +2,7 @@ import React, { useState, Profiler, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./chart-Ndays.scss";
-import Test, { getGroup } from "../../functions/find-element";
+import { getGroup } from "../../functions/find-element";
 import ChartBlock from "./chart-block-component";
 import ToggleThing from "../app-small-components/toggle-component";
 
@@ -69,8 +69,8 @@ const ChartNDays = ({ num, entries, user, categories }) => {
           </div>
         ))
       )}
-      <Test />
-      <ToggleThing toggleShow={toggleShow} state={show} />
+
+      <ToggleThing toggleShow={toggleShow} state={show} label={"show notes"} />
     </Profiler>
   );
 };

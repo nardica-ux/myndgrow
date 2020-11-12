@@ -10,10 +10,12 @@ import { add_story_draft } from "../../redux/success-stories/story-actions";
 const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
   const [isPublic, setPublic] = useState(false);
   const [isCompleted, setCompleted] = useState(false);
+  const [anonymous, setAnonymous] = useState(true);
   const [onCategory, reflectOnCategory] = useState("");
   const [onGoal, reflectOnGoal] = useState("");
   const [onQuestion, reflectOnQuestion] = useState("");
   const [onJourney, reflectOnJourney] = useState("");
+
   if (!new_draft) return <Redirect to="/structure" />;
   const {
     color,
@@ -34,6 +36,10 @@ const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
       ava: user.ava || "",
       published: isPublic,
       is_completed: isCompleted,
+      anonymous,
+      title: name,
+      goal,
+      question,
       on_project: onCategory,
       on_goal: onGoal,
       on_question: onQuestion,
@@ -47,72 +53,108 @@ const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
   };
 
   return (
-    <div>
+    <>
       <form className="app-form">
-        <div className="reflect-story">
-          <p>
-            Completing project:
-            <br /> {name}
-          </p>
-          <AppTextArea
-            color={color}
-            name="thoughts-on-project"
-            nolabel
-            getValue={onCategory}
-            placeHolder={"Thoughts on this project"}
-            callFunc={(e) => reflectOnCategory(e.target.value)}
-          />
-        </div>
-        <div className="reflect-story">
-          <p>
-            Project Goal:
-            <br /> {goal}
-          </p>
-          <AppTextArea
-            color={color}
-            name="project-goal"
-            nolabel
-            placeHolder={"what is about the goal?"}
-            getValue={onGoal}
-            callFunc={(e) => reflectOnGoal(e.target.value)}
-          />
-        </div>
-        <div className="reflect-story">
-          <p>
-            Project Question: <br />
-            {question}
-          </p>
-          <AppTextArea
-            color={color}
-            name="project-question"
-            placeHolder={"what is the answer for this question?"}
-            nolabel
-            getValue={onQuestion}
-            callFunc={(e) => reflectOnQuestion(e.target.value)}
-          />
-        </div>
-        <div className="reflect-story">
-          <p>Notes about the journey</p>
-          <AppTextArea
-            color={color}
-            name="project-journey"
-            placeHolder="notes about your journey"
-            nolabel
-            getValue={onJourney}
-            callFunc={(e) => reflectOnJourney(e.target.value)}
-          />
-        </div>
+        <table className="table-form">
+          <tbody>
+            <tr>
+              <td className="category-title">
+                Completing project:
+                <br />
+                <span style={{ color }}>{name}</span>
+              </td>
+              <td>
+                <AppTextArea
+                  color={color}
+                  name="thoughts-on-project"
+                  nolabel
+                  getValue={onCategory}
+                  placeHolder={"Thoughts on this project"}
+                  callFunc={(e) => reflectOnCategory(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="category-detail">
+                Project Goal:
+                <br />
+                <span style={{ color }}>{goal}</span>
+              </td>
+              <td>
+                <AppTextArea
+                  color={color}
+                  name="project-goal"
+                  nolabel
+                  placeHolder={"what is about the goal?"}
+                  getValue={onGoal}
+                  callFunc={(e) => reflectOnGoal(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="category-detail">
+                Project Question: <br />
+                <span style={{ color }}> {question}</span>
+              </td>
+              <td>
+                <AppTextArea
+                  color={color}
+                  name="project-question"
+                  placeHolder={"what is the answer for this question?"}
+                  nolabel
+                  getValue={onQuestion}
+                  callFunc={(e) => reflectOnQuestion(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="category-detail">Notes about the journey</td>
+              <td>
+                <AppTextArea
+                  color={color}
+                  name="project-journey"
+                  placeHolder="notes about your journey"
+                  nolabel
+                  getValue={onJourney}
+                  callFunc={(e) => reflectOnJourney(e.target.value)}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
 
-      <div style={{ display: "flex" }}>
-        Is Project completed?
-        <ToggleThing state={isCompleted} toggleShow={setCompleted} />
-        {isCompleted ? "set Completed" : "Save as Draft"}
-      </div>
-      <div style={{ display: "flex" }}>
-        Share story? <ToggleThing state={isPublic} toggleShow={setPublic} />
-        {isPublic ? "you are sharing your story" : "only you see the story"}
-      </div>
+      <ToggleThing
+        state={isCompleted}
+        status={isCompleted ? "set Completed" : "Save as Draft"}
+        toggleShow={setCompleted}
+        label={"Is Project completed?"}
+        size="small"
+      />
+
+      <ToggleThing
+        label={"Share story?"}
+        state={isPublic}
+        toggleShow={setPublic}
+        margin={"10px auto"}
+        size="small"
+        status={
+          isPublic ? "you are sharing your story" : "only you see the story"
+        }
+      />
+      <ToggleThing
+        label={"Show your name?"}
+        state={anonymous}
+        toggleShow={setAnonymous}
+        margin={"10px auto"}
+        size="small"
+        status={
+          anonymous
+            ? "you are sharing anonymously"
+            : "you publish under your name"
+        }
+      />
+
       <AppButton
         color={"royalblue"}
         callFunc={() => add_story_draft(null)}
@@ -125,7 +167,7 @@ const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
         toggleText={"Submit Review"}
         styleObj={{ float: "right" }}
       />
-    </div>
+    </>
   );
 };
 const mapStateToProps = (state) => ({

@@ -33,7 +33,7 @@ const SuccessStoryCard = ({ storyData }) => {
           by {name} {renderAva()}
         </span>
       </h3>
-      <SuccessStoryDiagram diadata={diagram} />
+      <SuccessStoryDiagram diadata={{ ...diagram, comments }} />
       {content()}
       <span
         onClick={() => toggleExpanded(!expanded)}

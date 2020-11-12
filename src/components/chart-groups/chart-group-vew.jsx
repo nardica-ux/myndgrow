@@ -29,7 +29,6 @@ const ChartGroupView = ({ num, entries, categories }) => {
     return groupObj;
   }
   const data = getDataArray(num);
-  data.map((el) => console.log(el.group, el.value));
   const groupValues = groupReducer("value");
   let findEl = (group) => {
     let color = [...categories, ...groups].find((el) => el.name === group);

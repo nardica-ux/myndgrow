@@ -1,7 +1,17 @@
 export const stories = [
   {
-    name: "Maria Twins",
+    author_name: "Maria Twins",
+    author_id: "",
     title: "Getting book done",
+    goal: "",
+    question: "",
+    on_project: "",
+    on_goal: "",
+    on_question: "",
+    is_completed: false,
+    is_public: false,
+    anonymous: true,
+    reactions: [],
     story: [
       "Decided to write my book. For this I decided to write or edit One Chapter each day. I had started such staff before but didn't finish because of loosing focus. There was many things ongoing - mine project just lost the competition for me. THIS time I want to win and got all tools I know.",
       "It was scary to fail, but why not to try? I liked that I can see my points adding to the tree. I also hoped it would feel good. to see different viusals",
@@ -15,7 +25,24 @@ export const stories = [
     diagram: {
       color: "slateblue",
       total: 87,
-      topics: ["writing", "editing", "feedback"],
+      sub_groups: ["writing", "editing", "feedback"],
+      topic_points: [
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+      ],
       points: [
         3,
         3,
@@ -44,11 +71,10 @@ export const stories = [
       ],
     },
     comments: [
-      {
-        comm_id: "23874",
-        name: "ewy",
-        comment: "wuyf wef uyfg rygv vg",
-      },
+      "hvsdbvhjsdbv",
+      "iue niuehf iuhe fiu sdugh isdf uds f",
+      "ahefajhscjasgvchsgavchgs",
+      "eutdasgv gdagfd agf yatwfdyta ",
     ],
   },
   {
@@ -67,7 +93,24 @@ export const stories = [
     diagram: {
       color: "violet",
       total: 87,
-      topics: ["writing", "editing", "feedback"],
+      sub_groups: ["writing", "editing", "feedback"],
+      topic_points: [
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["writing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["editing", 4],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+        ["feedback", 3],
+      ],
       points: [
         3,
         3,
@@ -96,11 +139,10 @@ export const stories = [
       ],
     },
     comments: [
-      {
-        comm_id: "23874",
-        name: "ewy",
-        comment: "wuyf wef uyfg rygv vg",
-      },
+      "hvsdbvhjsdbv",
+      "iue niuehf iuhe fiu sdugh isdf uds f",
+      "ahefajhscjasgvchsgavchgs",
+      "eutdasgv gdagfd agf yatwfdyta ",
     ],
   },
 ];

@@ -1,12 +1,12 @@
 textarea {
-  min-width: 280px;
+  min-width: 240px;
   min-height: 60px;
   resize: vertical;
-  margin: 10px auto;
-  width: 96%;
+  margin: 10px;
+  width: 90%;
   border-radius: 8px;
   padding: 8px;
-  background-color: whitesmoke;
+  //   background-color: whitesmoke;
   &:focus {
     outline: none;
     border-width: 3px;

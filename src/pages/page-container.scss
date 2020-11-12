@@ -1,11 +1,12 @@
 .page-container {
-  width: 100%;
+  width: 96%;
+  position: relative;
   margin: 0;
   padding: 10px 2%;
   background-color: whitesmoke;
   h2 {
     font-weight: 100;
-    width: 96%;
+    width: 100%;
     color: grey;
     text-align: left;
     text-transform: uppercase;
@@ -14,5 +15,10 @@
       content: "";
       border-bottom: 1px solid grey;
     }
+  }
+  & .page-header-right {
+    position: absolute;
+    top: 1%;
+    right: 2%;
   }
 }
