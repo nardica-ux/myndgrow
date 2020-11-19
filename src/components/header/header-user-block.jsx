@@ -26,7 +26,6 @@ const HeaderUserBlock = ({
       }}
     />
   );
-
   const userBlock = () => (
     <div className="header-block-mobile">
       <div>Hi, {user.displayName}</div>
@@ -44,6 +43,7 @@ const HeaderUserBlock = ({
         color="darkblue"
         callFunc={() => refresh_entries_redux(user)}
       />
+
       {compact ? (
         <CloseIcon
           className="material-icons"
@@ -73,6 +73,7 @@ const HeaderUserBlock = ({
     loginButton
   );
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     refresh_entries_redux: (user) => dispatch(refresh_entries_redux(user)),

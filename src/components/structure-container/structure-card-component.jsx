@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import EditIcon from "@material-ui/icons/Edit";
 import { connect } from "react-redux";
 import "./structure.scss";
 import PropTypes from "prop-types";
 
-const StructureCard = ({ num, editGroup, categories, fetching }) => {
-  const [group, setGroup] = useState(categories[num]);
-  const { color, name, sub_groups, goal, question, own_id } = group;
-
-  useEffect(() => {
-    setGroup(categories[num]);
-  }, [JSON.stringify(categories[num].sub_groups), fetching]);
+const StructureCard = ({ editGroup, fetching, category }) => {
+  const { color, name, sub_groups, goal, question, own_id } = category;
 
   return (
     <div
@@ -29,7 +24,7 @@ const StructureCard = ({ num, editGroup, categories, fetching }) => {
               borderRadius: 4,
               float: "right",
             }}
-            onClick={() => editGroup({ ...categories[num], status: "edit" })}
+            onClick={() => editGroup({ ...category, status: "edit" })}
           />
           {name}
         </h4>
@@ -58,7 +53,6 @@ const StructureCard = ({ num, editGroup, categories, fetching }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  categories: state.categories.categories,
   fetching: state.categories.fetching,
 });
 

@@ -40,8 +40,8 @@ export const paragraphs = [
     subtitle: "From mind mapping to mind growing",
     icon: "./road.png",
     text: `Mind maps are great but they are hard to maintain. Yet, the most value comes from practice, from reflecting every day rather than once in a while
-With that habit we do not depend in our progress from having coach, right mood, good friend to talk or the event to get insight.
-that practice ideally bring the consistent remembering what’s main today and what is done.`,
+With this habit we do not depend in our progress from having coach, right mood, good friend to talk or the event to get insight about yourself.
+This practice ideally bring the consistent remembering what is the main thing today and how that adds to the progress.`,
     link: "From an action to interacting",
   },
 ];

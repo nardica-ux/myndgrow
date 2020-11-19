@@ -1,9 +1,10 @@
+//  We are on the experimental stage - please, feel free to write us about the impression and ideas that came to your mind about this project.
+
 const Intro = {
   intro: [
-    `This is a visualization for self-educational activities to show what's done in an intuitive way. We believe that most of us are visual thinkers and can gain more insights from pictures. `,
-    `Together with numerous opportunities technologies have invoked the endless choices and challenges for the persistor brain muscle. With this effect, educational resources that we have access to nowadays are hard to digest quite too often. this project offers the visual focus on your own self-training`,
-    `We hope that visuals might become the tool to preserve motivation. With task-list you typically see endless undone which gives not much clarity about where you are.  Instead here is the overview of what you have accopmlished bundled to where you go. It is great to remind yourself about how much is done!
-    We are on the experimental stage - please, feel free to write us about the impression and ideas that came to your mind about this project.`,
+    `This is a visualization for self-educational activities to show what's done in an intuitive way. We believe that most of us are visual thinkers and can gain more insights from pictures. Won't it be great to see pictures about yourself?`,
+    `Together with numerous opportunities technologies have invoked the endless choices and challenges for the persistor brain muscle. With this effect, educational resources that we have access to nowadays are hard to digest quite too often. This project offers the visual focus on your own self-training hence creating the visual about you when you want to share your story with someone (maybe your coach?)`,
+    `We hope that visuals might become the tool to preserve motivation. With task-list you typically see endless undone which gives not much clarity about where you are.  Instead here is the overview of what you have accopmlished bundled to where you go. It is great to remind yourself about how much is done! `,
   ],
   intro_img: "welcome-art.jpeg",
   steps: [

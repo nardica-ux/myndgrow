@@ -1,4 +1,5 @@
 import { firestore } from "./firebase-root";
+import { FB_CONSTANTS } from "./firebase-constants";
 
 export const addCategoryFire = async (category) => {
   if (!category) return;
@@ -20,7 +21,7 @@ export const addCategoryFire = async (category) => {
     let categoryData = await categoryRef.get();
     return categoryData.data();
   } catch (err) {
-    console.log("error creating meeting ", err.message);
+    return err;
   }
 };
 export const fetchUserCategories = async (id) => {
@@ -32,19 +33,21 @@ export const fetchUserCategories = async (id) => {
     let result = categoryRef.docs.map((el) => el.data());
     return result;
   } catch (err) {
-    console.log(err.message);
+    return err;
   }
 };
 
-export const updateCategoryFire = async (Category) => {
+export const updateCategoryFire = async (category) => {
   try {
     let snapshot = firestore
-      .collection(`users/${Category.user_id}/user_categories`)
-      .doc(Category.own_id);
-    if (snapshot.id) await snapshot.update(Category);
+      .collection(
+        `${FB_CONSTANTS.USER}/${category.user_id}/${FB_CONSTANTS.USER_CATEGORIES}`
+      )
+      .doc(category.own_id);
+    if (snapshot.id) await snapshot.update(category);
     let renewed = await snapshot.get();
     return renewed.data();
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };

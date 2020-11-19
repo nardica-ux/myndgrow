@@ -52,7 +52,6 @@ export const fetch_entries = async (user) => {
 };
 export const updateEntryFire = async (entry) => {
   try {
-    console.log(entry);
     let snapshot = firestore
       .collection(`users/${entry.user_id}/user_entries`)
       .doc(entry.own_id);

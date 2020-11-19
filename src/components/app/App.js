@@ -13,35 +13,40 @@ import {
   init_categories_start,
   init_categories,
 } from "../../redux/categories/category-actions";
-import { init_stories } from "../../redux/success-stories/story-actions";
+import {
+  init_user_stories_async,
+  init_public_stories_async,
+  init_user_stories_success,
+} from "../../redux/success-stories/story-actions";
 
 import { pages } from "./pages";
 import Header from "../header/header-container";
 import PageContainer from "../../pages/page-container";
-import { stories } from "../success-stories/story-sample";
 
 function App({
   set_user,
   user = null,
   entries = null,
+  public_stories,
   refresh_entries_redux,
   init_entries,
   init_categories_start,
   init_categories,
-  init_stories,
+  init_user_stories_async,
+  init_public_stories_async,
+  init_user_stories_success,
 }) {
   let unsubscribeFromAuth = null;
+  useEffect(() => {
+    if (!public_stories.length) init_public_stories_async();
+  }, [public_stories.length]);
 
   useEffect(() => {
-    async function fetchData() {
-      if (user && !entries.entries) {
-        await refresh_entries_redux(user);
-        await init_categories_start(user.own_id);
-        init_stories(stories);
-      }
+    if (user && !entries.entries) {
+      refresh_entries_redux(user);
+      init_categories_start(user.own_id);
+      init_user_stories_async(user.own_id);
     }
-    fetchData();
-
     unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         if (user) return;
@@ -55,8 +60,9 @@ function App({
       set_user(null);
       init_categories([]);
       init_entries([]);
+      init_user_stories_success([]);
     });
-  }, [user]); //entries were before
+  }, [JSON.stringify(user)]); //entries were before
 
   const pagesComponents = pages.map((el, i) => (
     <Route
@@ -81,6 +87,8 @@ function App({
 const mapStateToProps = (state) => ({
   user: state.user.user,
   entries: state.entries,
+  stories: state.stories.user_stories,
+  public_stories: state.stories.public_stories,
 });
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -89,7 +97,10 @@ const mapDispatchToProps = (dispatch) => {
     init_entries: (obj) => dispatch(init_entries(obj)),
     init_categories_start: (id) => dispatch(init_categories_start(id)),
     init_categories: (id) => dispatch(init_categories(id)),
-    init_stories: (arr) => dispatch(init_stories(arr)),
+    init_user_stories_async: (id) => dispatch(init_user_stories_async(id)),
+    init_public_stories_async: () => dispatch(init_public_stories_async()),
+    init_user_stories_success: (arr) =>
+      dispatch(init_user_stories_success(arr)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

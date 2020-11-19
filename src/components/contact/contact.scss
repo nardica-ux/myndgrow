@@ -20,7 +20,7 @@
   top: 0;
 }
 .marked-div {
-  color: white;
+  color: transparent;
   opacity: 0.3;
   text-align: left;
   letter-spacing: 0.3px;
@@ -39,7 +39,6 @@
   text-align: left;
   outline: none;
   background-color: transparent;
-  color: red;
   resize: none;
 }
 mark {

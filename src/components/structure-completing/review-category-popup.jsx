@@ -22,7 +22,7 @@ const ReviewCategoryForm = ({ group, editGroup, entries, add_story_draft }) => {
           tracking.push({
             points: parseInt(el.value),
             text: el.text,
-            topic: [el.topic, parseInt(el.value)],
+            topic_points: { [el.topic]: parseInt(el.value) },
           });
         }
       }
@@ -35,7 +35,7 @@ const ReviewCategoryForm = ({ group, editGroup, entries, add_story_draft }) => {
   const diagramInfo = (arr) => ({
     ...group,
     points: arr.map((el) => el.points),
-    topic_points: arr.map((el) => el.topic),
+    topic_points: arr.map((el) => el.topic_points),
     comments: arr.map((el) => el.text),
   });
 

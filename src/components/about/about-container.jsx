@@ -31,6 +31,9 @@ const AboutContainer = () => {
     <div>
       {aboutTabs(activeTab)}
       {content[activeTab]}
+      <div>
+        <h4> who leads the project on this topic: Nadia Erokhina</h4>
+      </div>
     </div>
   );
 };

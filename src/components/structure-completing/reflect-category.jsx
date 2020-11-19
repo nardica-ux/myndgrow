@@ -5,9 +5,23 @@ import "./reflect-category.scss";
 import AppButton from "../app-small-components/app-button-component";
 import AppTextArea from "../app-small-components/textarea-component";
 import ToggleThing from "../app-small-components/toggle-component";
-import { add_story_draft } from "../../redux/success-stories/story-actions";
+import {
+  add_story_draft,
+  submit_story_async,
+} from "../../redux/success-stories/story-actions";
+import {
+  update_category_start,
+  init_categories_start,
+} from "../../redux/categories/category-actions";
 
-const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
+const ReflectCategoryForm = ({
+  user,
+  new_draft,
+  add_story_draft,
+  submit_story_async,
+  categories,
+  update_category_start,
+}) => {
   const [isPublic, setPublic] = useState(false);
   const [isCompleted, setCompleted] = useState(false);
   const [anonymous, setAnonymous] = useState(true);
@@ -17,39 +31,29 @@ const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
   const [onJourney, reflectOnJourney] = useState("");
 
   if (!new_draft) return <Redirect to="/structure" />;
-  const {
-    color,
-    sub_groups,
-    name,
-    goal,
-    question,
-    comments,
-    topic_points,
-    points,
-  } = new_draft;
-  console.log(new_draft);
+  const { color, goal, question, name } = new_draft;
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     const obj = {
-      author_name: user.displayName,
-      author_id: user.own_id,
-      ava: user.ava || "",
-      published: isPublic,
+      ...new_draft,
+      user_name: user.displayName,
+      user_ava: user.ava || "",
+      is_public: isPublic,
       is_completed: isCompleted,
       anonymous,
       title: name,
-      goal,
-      question,
       on_project: onCategory,
       on_goal: onGoal,
       on_question: onQuestion,
       story: onJourney,
+      story_id: new_draft.own_id,
+      status: "completed",
       img: "",
-      diadata: { points, topic_points, comments, color, sub_groups },
-      comments,
-      reactions: [],
     };
-    console.log(obj);
+    let cat = categories.find((el) => el.own_id === new_draft.own_id);
+    update_category_start({ ...cat, status: "completed" });
+    submit_story_async(obj);
+    init_categories_start(user.own_id);
   };
 
   return (
@@ -173,10 +177,14 @@ const ReflectCategoryForm = ({ user, new_draft, add_story_draft }) => {
 const mapStateToProps = (state) => ({
   user: state.user.user,
   new_draft: state.stories.new_draft,
+  categories: state.categories.categories,
 });
 const mapDispatchToProps = (dispacth) => {
   return {
     add_story_draft: (obj) => dispacth(add_story_draft(obj)),
+    update_category_start: (obj) => dispacth(update_category_start(obj)),
+    submit_story_async: (obj) => dispacth(submit_story_async(obj)),
+    init_categories_start: (id) => dispacth(init_categories_start(id)),
   };
 };
 export default connect(

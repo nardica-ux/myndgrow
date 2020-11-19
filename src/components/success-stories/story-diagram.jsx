@@ -6,6 +6,7 @@ import Bullet from "../app-small-components/bullet";
 const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
   const [commentsShown, showComments] = useState(false);
   const { color, sub_groups, points, topic_points, comments } = diadata;
+
   let accumulatedPoints = (arr) => {
     let newArr = [arr[0]];
     for (let i = 1; i < arr.length; i++) newArr.push(arr[i] + newArr[i - 1]);
@@ -21,19 +22,19 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
 
   const topicPoints = () => {
     let sub_groupsObj = {};
-    for (let topic of topic_points) {
-      sub_groupsObj.hasOwnProperty(topic[0])
-        ? sub_groupsObj[topic[0]].push(topic[1])
-        : (sub_groupsObj[topic[0]] = [topic[1]]);
+    for (let i = 0; i < topic_points.length; i++) {
+      let el = Object.entries(topic_points[i]);
+      sub_groupsObj.hasOwnProperty(el[0])
+        ? sub_groupsObj[el[0]].push(el[1])
+        : (sub_groupsObj[el[0]] = [el[1]]);
     }
     return sub_groupsObj;
   };
-  const topicValues = topicPoints();
+  // const topicValues = topicPoints();
 
   return (
     <div className="diagram-container">
       <div>
-        {/* <h3 style={{ color }}> Result snapshot</h3> */}
         <p className="card-text">Points Total: {sum(points)}</p>
         <p className="card-text">
           sub_groups:
@@ -41,7 +42,8 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
             <span
               style={{ color, borderColor: color, display: "inline-block" }}
             >
-              {el} {topicValues[el] ? sum(topicValues[el]) : 0}
+              {el}
+              {/* {topicValues[el] ? sum(topicValues[el]) : 0} */}
             </span>
           ))}
         </p>

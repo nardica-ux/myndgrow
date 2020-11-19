@@ -1,15 +1,15 @@
 export const stories = [
   {
-    author_name: "Maria Twins",
+    author_name: "Helga Twins",
     author_id: "",
-    title: "Getting book done",
+    title: "Renew the self-branding",
     goal: "",
     question: "",
-    on_project: "",
-    on_goal: "",
+    on_project: "dfgdfgdfg gdf",
+    on_goal: "gdfgdfg gdfgfd",
     on_question: "",
-    is_completed: false,
-    is_public: false,
+    is_completed: true,
+    is_public: true,
     anonymous: true,
     reactions: [],
     story: [
@@ -22,13 +22,14 @@ export const stories = [
     img_ava: "./img/avatars/sample-ava.png",
     date: "12/12/12",
     own_id: "287348172",
-    diagram: {
+    color: "darkolive",
+    diadata: {
       color: "slateblue",
       total: 87,
       sub_groups: ["writing", "editing", "feedback"],
       topic_points: [
-        ["writing", 4],
-        ["writing", 4],
+        ["writing", 12],
+        ["writing", 11],
         ["writing", 4],
         ["writing", 4],
         ["writing", 4],
@@ -80,6 +81,8 @@ export const stories = [
   {
     name: "Maria Twins",
     title: "Getting book done",
+    on_project: "rft r dfgdfgdfg gdf",
+    on_goal: "gYUyu dfgdfg gdfgfd",
     story: [
       "Decided to write my book. For this I decided to write or edit One Chapter each day. I had started such staff before but didn't finish because of loosing focus. There was many things ongoing - mine project just lost the competition for me. THIS time I want to win and got all tools I know.",
       "It was scary to fail, but why not to try? I liked that I can see my points adding to the tree. I also hoped it would feel good. to see different viusals",
@@ -87,10 +90,11 @@ export const stories = [
       "it was 43 day of efforts and, yes - not every day I worked and not every day it was 40 min :-). It also took me more than 30 days as I hoped but I see that I underestimated the complexity.",
     ],
     img: "",
+    color: "golden",
     img_ava: "./img/avatars/sample-ava.png",
     date: "12/12/12",
     own_id: "287348172",
-    diagram: {
+    diadata: {
       color: "violet",
       total: 87,
       sub_groups: ["writing", "editing", "feedback"],

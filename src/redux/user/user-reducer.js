@@ -1,15 +1,8 @@
 import { userActionTypes } from "./user-actions";
 const INITIAL_STATE = {
-  user: null,
-};
-
-const sampleUser = {
-  createdAt: { seconds: 1600305630, nanoseconds: 326000000 },
-  displayName: "Nadezhda Erokhina",
-  email: "nardica@gmail.com",
-  own_id: "eRbtsVWVY0TIxtlxn56kno0nJPx1",
-  type: "user",
-  modal_open: false,
+  user: {
+    own_id: null,
+  },
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

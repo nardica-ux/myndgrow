@@ -8,7 +8,7 @@ import ToggleThing from "../app-small-components/toggle-component";
 
 import "./chart-Ndays.scss";
 
-const ChartNDays = ({ num, entries, user, categories }) => {
+const ChartNDays = ({ num, entries, user, categories = [] }) => {
   const [show, toggleShow] = useState(false);
   const [dates, setDates] = useState([]);
 

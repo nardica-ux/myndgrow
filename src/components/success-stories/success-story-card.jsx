@@ -1,44 +1,56 @@
 import React, { useState } from "react";
 import "./success-story.scss";
-import SuccessStoryDiagram from "./story-diagram";
+import StoryCardExpanded from './success-story-expanded'
 
 const SuccessStoryCard = ({ storyData }) => {
   const [expanded, toggleExpanded] = useState(false);
-  const { name, story, own_id, diagram, comments, title, img_ava } = storyData;
 
-  let content = () => {
-    let renderstory = story.map((el, i) => (
-      <p className="card-text" key={own_id + i}>
-        {el}
+  const {
+    user_name,
+    title,
+    img_ava,
+    color,
+    on_project,
+    on_goal,
+  } = storyData;
+
+  let contentShort = (
+    <div>
+      <p className="card-text" key={user_name || title}>
+        {on_project}
       </p>
-    ));
-    return expanded ? renderstory : renderstory[0];
-  };
-
-  const renderAva = () => (
-    <img src={`${img_ava}`} alt="ava" className="card-ava" />
+      <p className="card-text" key={user_name + 1 || title + 1}>
+        {on_goal}
+      </p>
+    </div>
   );
-
+const cardheader = (
+  <h3
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}
+  >
+    {title}
+    {user_name ? (
+      <span style={{ color, marginLeft: "auto" }}>
+        {user_name}
+        <img src={`${img_ava}`} alt="ava" className="card-ava" />
+      </span>
+    ) : (
+      " by someone "
+    )}
+  </h3>
+);
   return (
-    <div className="card-container">
-      <h3
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {title}
-        <span style={{ color: diagram.color, marginLeft: "auto" }}>
-          by {name} {renderAva()}
-        </span>
-      </h3>
-      <SuccessStoryDiagram diadata={{ ...diagram, comments }} />
-      {content()}
+    <div className="card-container" style={expanded ? { width: "100%" } : null}>
+      {cardheader}
+      {expanded ? <StoryCardExpanded storyData={{}} /> : contentShort}
       <span
         onClick={() => toggleExpanded(!expanded)}
         className="success-story-expand"
-        style={{ color: diagram.color }}
+        style={{ color }}
       >
         {expanded ? "...hide" : "...read more"}
       </span>

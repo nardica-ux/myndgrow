@@ -27,7 +27,6 @@ export const add_entry = (entry) => {
   return async (dispatch) => {
     try {
       let entryNew = await addEntryFire(entry);
-      console.log(entry, entryNew);
       dispatch(add_entry_success(entryNew));
       return "OK";
     } catch (err) {
