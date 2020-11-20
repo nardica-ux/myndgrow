@@ -1,12 +1,12 @@
+@import "../app/app-style.scss";
+
 textarea {
-  min-width: 240px;
-  min-height: 60px;
+  min-width: 180px;
   resize: vertical;
-  margin: 10px;
+  margin: $small 0;
   width: 90%;
-  border-radius: 8px;
-  padding: 8px;
-  //   background-color: whitesmoke;
+  border-radius: $xsmall;
+  padding: $small;
   &:focus {
     outline: none;
     border-width: 3px;

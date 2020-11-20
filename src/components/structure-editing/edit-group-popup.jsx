@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../structure-container/structure.scss";
 import { connect } from "react-redux";
 import AppButton from "../app-small-components/app-button-component";
-
+import colors from "../app/app-style.scss";
 import TopicsInput from "./edit-topics";
 import AppInput from "../app-small-components/app-input-component";
 import { update_category_start } from "../../redux/categories/category-actions";
@@ -55,7 +55,7 @@ const EditGroup = ({ group, update_category_start, editGroup }) => {
       <div style={{ textAlign: "center" }}>
         <AppButton
           toggleText="Show all categories"
-          color={"yellowgreen"}
+          color={colors.accent_color}
           theme="light"
           callFunc={() => editGroup({ status: "structure" })}
         />
@@ -68,7 +68,8 @@ const EditGroup = ({ group, update_category_start, editGroup }) => {
         />
         <AppButton
           toggleText="Review"
-          color="tomato"
+          theme="light"
+          color={colors.active_color}
           callFunc={() => editGroup({ ...group, status: "startcomplete" })}
         />
       </div>

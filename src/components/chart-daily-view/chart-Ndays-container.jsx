@@ -40,6 +40,7 @@ const ChartNDays = ({ num, entries, user, categories = [] }) => {
       if (obj[key])
         output.push(
           <ChartBlock
+            key={obj[key].own_id}
             text={show}
             color={getGroup(obj[key], categories).color}
             entry={obj[key]}
@@ -57,8 +58,8 @@ const ChartNDays = ({ num, entries, user, categories = [] }) => {
           <div className="loader">...coming soon </div>
         ) : null
       ) : (
-        dates.map((date) => (
-          <div key={date + "-day"}>
+        dates.map((date, i) => (
+          <div key={date + i + "-day"}>
             <h4 style={{ marginBottom: 8 }}>
               {date}
               <span style={{ float: "right" }}>

@@ -1,14 +1,15 @@
 import React from "react";
+import "./app-input.scss";
+import styles from "../app/app-style.scss";
 
 const AppInput = ({
   callFunc,
   getValue,
-  type,
+  type = "text",
   name,
-  color,
+  color = styles.inactive_color,
   styleObj,
   id,
-  align,
   placeHolder,
 }) => (
   <label htmlFor={name} style={{ display: "block" }}>
@@ -21,9 +22,8 @@ const AppInput = ({
       value={getValue}
       style={{
         ...styleObj,
-        textAlign: align,
-        borderBottom: `${color || "grey"} 2px solid`,
-        color: color || "grey",
+        borderBottom: `${color} 2px solid`,
+        color,
       }}
       onChange={callFunc}
     />

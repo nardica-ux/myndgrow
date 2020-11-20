@@ -5,16 +5,17 @@ const AppTextArea = ({
   callFunc,
   getValue,
   name = "",
-  color,
+  color = "grey",
   styleObj,
   placeHolder,
   nolabel,
+  rows = 4,
 }) => (
   <label htmlFor={name} style={{ display: "block" }}>
     {!nolabel ? name.split("-").join(" ") : null}
     <textarea
       name={name ? name : "app-textarea"}
-      rows="4"
+      rows={rows}
       cols="40"
       placeholder={placeHolder}
       value={getValue}

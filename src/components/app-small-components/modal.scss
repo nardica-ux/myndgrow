@@ -1,0 +1,14 @@
+@import "../app/app-style.scss";
+.popup-blur {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  z-index: 110;
+  width: 100%;
+  height: 100%;
+  background-color: $shadow-color;
+  content: "";
+}

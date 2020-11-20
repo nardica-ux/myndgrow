@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import AppButton from "../app-small-components/app-button-component";
+import "./modal.scss";
 
 const AppModal = (props) => {
-  const { getmodalclosed, title, modalWidth } = props;
+  const { getmodalclosed, title, modalWidth = "70%" } = props;
   const ref = useRef();
 
   const childrenWithProps = React.Children.map(props.children, (child) => {

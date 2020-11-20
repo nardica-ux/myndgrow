@@ -62,7 +62,7 @@ export const firebase_add_public = async (story) => {
   else alert("already exists");
 };
 
-export const toggle_story_public = async (story) => {
+export const firebase_update_story_public = async (story) => {
   if (!story) return;
   try {
     let storyPubRef = firestore

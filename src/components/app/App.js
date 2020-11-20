@@ -40,7 +40,6 @@ function App({
   useEffect(() => {
     if (!public_stories.length) init_public_stories_async();
   }, [public_stories.length]);
-
   useEffect(() => {
     if (user && !entries.entries) {
       refresh_entries_redux(user);

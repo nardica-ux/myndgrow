@@ -3,7 +3,7 @@ import {
   firebase_init_user_stories,
   firebase_update_user_story,
   firebase_fetch_public_stories,
-  toggle_story_public,
+  firebase_update_story_public,
   firebase_add_public,
 } from "../../firebase/firebase-stories";
 
@@ -15,7 +15,9 @@ export const storyActionTypes = {
   SUBMIT_STORY_FAIL: "SUBMIT_STORY_FAIL",
 
   UPDATE_USER_STORY_SUCCESS: "UPDATE_USER_STORY_SUCCESS",
+  UPDATE_USER_STORY_SUCCESS: "UPDATE_USER_STORY_SUCCESS",
   PUBLIC_STORIES_SUCCESS: "PUBLIC_STORIES_SUCCESS",
+  TOGGLE_PUBLIC_STORY: "TOGGLE_PUBLIC_STORY",
 };
 
 export const public_stories_success = (arr) => ({
@@ -34,14 +36,22 @@ export const init_public_stories_async = () => {
     }
   };
 };
+export const update_story_public_async = (story) => {
+  return async (dispatch) => {
+    try {
+      let update = firebase_update_story_public(story);
+      // if (update) dispatch(toggle_public_success(update));
+    } catch (e) {
+      dispatch(submit_story_fail(e));
+    }
+  };
+};
 
 export const update_user_story_async = (story) => {
   return async (dispatch) => {
     try {
       let updateRef = await firebase_update_user_story(story);
-      if (story.is_public !== story.public_before) {
-        await toggle_story_public(updateRef);
-      }
+      let updatePublic = await firebase_update_story_public(story);
       dispatch(update_user_story_success(updateRef));
     } catch (err) {
       dispatch(submit_story_fail(err));
@@ -49,7 +59,7 @@ export const update_user_story_async = (story) => {
   };
 };
 const update_user_story_success = (story) => ({
-  type: storyActionTypes.UPDATE_STORY_SUCCESS,
+  type: storyActionTypes.UPDATE_USER_STORY_SUCCESS,
   payload: story,
 });
 

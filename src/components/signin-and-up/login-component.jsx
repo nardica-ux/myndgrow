@@ -3,6 +3,7 @@ import AppButton from "../app-small-components/app-button-component";
 import AppInput from "../app-small-components/app-input-component";
 import { connect } from "react-redux";
 import { auth, signInWithGoogle } from "../../firebase/firebase-root";
+import colors from "../app/app-style.scss";
 
 const LoginWith = ({ user }) => {
   const [newEmail, setEmail] = useState("");
@@ -17,6 +18,7 @@ const LoginWith = ({ user }) => {
       console.log(err);
     }
   };
+  console.log(colors);
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="app-form">
@@ -27,13 +29,13 @@ const LoginWith = ({ user }) => {
         <AppButton
           toggleText="login with FaceBook"
           type="button"
-          color="deepblue"
+          color={colors.inactive_color}
           size="large"
           disabled={true}
         />
         <br />
         <AppButton
-          color="yellowgreen"
+          color={colors.accent_color}
           size="large"
           toggleText=" login with Google"
           callFunc={() => signInWithGoogle()}
@@ -49,18 +51,18 @@ const LoginWith = ({ user }) => {
           type="email"
           getValue={newEmail || "enter email"}
           callFunc={(e) => setEmail(e.target.value)}
-          color="seagreen"
+          color={colors.secondary_color}
         />
         <br />
         <AppInput
           type="password"
           getValue={newPassword || "Enter password"}
           callFunc={(e) => setPassword(e.target.value)}
-          color="seagreen"
+          color={colors.secondary_color}
         />
         <br />
         <AppButton
-          color="seagreen"
+          color={colors.secondary_color}
           toggleText="login with email"
           align="center"
           size="large"

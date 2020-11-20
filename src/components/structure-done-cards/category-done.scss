@@ -1,0 +1,27 @@
+.fullwid {
+  width: 96%;
+  flex-wrap: wrap;
+  max-width: 95%;
+  padding-top: 0;
+  & .flex-half {
+    width: 49%;
+    text-align: left;
+    & h4 {
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
+    & p {
+      margin: 4px;
+    }
+  }
+}
+.done-points {
+  content: "";
+  border-radius: 4px;
+  height: 24px;
+  margin-left: 5px;
+  margin-top: 18px;
+  color: steelblue;
+  color: white;
+  text-align: center;
+}

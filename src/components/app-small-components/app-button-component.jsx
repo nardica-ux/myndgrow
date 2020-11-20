@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "../app/app-style.scss";
 
 const AppButton = ({
   callFunc,
-  toggleText,
+  toggleText = "button",
   disabled,
-  type,
+  type = "button",
   color,
   position,
   styleObj,
@@ -12,17 +13,22 @@ const AppButton = ({
   theme,
 }) => (
   <button
-    type={type || "button"}
+    type
     className="app-button"
     style={{
       position,
       right: position === "absolute" ? 10 : null,
-      padding: size === "large" ? "10px 30px" : "5px 10px",
-      margin: size === "large" ? "20px auto" : "10px auto",
-      fontSize: size === "large" ? 20 : 14,
+      padding:
+        size === "large"
+          ? `${styles.norm}px ${styles.large}px`
+          : `${styles.small}px ${styles.norm}px`,
+      margin:
+        size === "large" ? `${styles.large}px auto` : `${styles.small}px auto`,
+      fontSize:
+        size === "large" ? `${styles.medium_font}` : `${styles.norm_font}`,
       fontWeight: size === "large" ? null : 500,
-      backgroundColor: disabled ? "grey" : color,
-      color: theme === "light" ? "darkblue" : "white",
+      backgroundColor: disabled ? styles.inactive_color : color,
+      color: theme === "light" ? styles.text_color : styles.main_color,
       cursor: disabled ? null : "pointer",
       ...styleObj,
     }}

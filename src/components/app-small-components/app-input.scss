@@ -1,0 +1,25 @@
+@import "../app/app-style.scss";
+
+input {
+  font-size: $norm-font;
+  min-width: 230px;
+  max-width: 280px;
+  flex-basis: 30%;
+  flex-grow: 3;
+  background-color: transparent;
+  border: none;
+  padding: $xsmall $small;
+  border-radius: $small;
+  opacity: 0.8;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: $base-color;
+    opacity: 1;
+  }
+  &:focus {
+    letter-spacing: 0.4px;
+    opacity: 1;
+    outline: none;
+    background-color: $base-color;
+  }
+}

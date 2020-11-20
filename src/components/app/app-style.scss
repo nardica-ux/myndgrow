@@ -1,0 +1,52 @@
+$base_color: whitesmoke;
+$text_color: rgb(45, 45, 45);
+$main_color: white;
+$link_color: royalblue;
+$link_light_color: cornsilkflower;
+
+$accent_color: yellowgreen;
+$secondary_color: seagreen;
+$next_color: slateblue;
+$active_color: tomato;
+$inactive_color: grey;
+$inactive_light_color: lightgrey;
+$shadow_color: rgba(0, 0, 0, 0.3);
+// FONTS
+$xlarge_font: 2rem;
+$large_font: 1.6rem;
+$medium_font: 1.3rem;
+$norm_font: 1rem;
+$small_font: 0.8rem;
+
+// PADDINS AND MARGINS
+$xsmall: 6px;
+$small: 12px;
+$norm: 24px;
+$large: 32px;
+
+@mixin shade() {
+  box-shadow: 3px 3px 12px $shadow_color;
+}
+@mixin simpleflex($wrap: wrap) {
+  display: flex;
+  flex-wrap: $wrap;
+}
+
+:export {
+  base_color: $base_color;
+  text_color: $text_color;
+  accent_color: $accent_color;
+  secondary_color: $secondary_color;
+  next_color: $next_color;
+  inactive_color: $inactive_color;
+  active_color: $active_color;
+  xsmall: $xsmall;
+  small: $small;
+  norm: $norm;
+  large: $large;
+  xlarge_font: $xlarge_font;
+  large_font: $large_font;
+  medium_font: $medium_font;
+  norm_font: $norm_font;
+  small_font: $small_font;
+}
