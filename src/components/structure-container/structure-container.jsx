@@ -10,6 +10,9 @@ import ErrorBoundary from "../error-boundary/error-boundary-component";
 import ReviewCategoryForm from "../structure-completing/review-category-popup";
 import DoneCard from "../structure-done-cards/category-done-card";
 import { CATEGORY } from "../app/CONSTANTS";
+import str_class from "./structure.module.scss";
+import app_const from "../app/app-style.scss";
+import ToggleThing from "../app-small-components/toggle-component";
 
 const StructureBlock = ({ categories }) => {
   const tabs = {
@@ -28,7 +31,7 @@ const StructureBlock = ({ categories }) => {
       return filtArr.map((el, i) => (
         <StructureCard
           category={el}
-          editGroup={setGroup}
+          setGroup={setGroup}
           key={el.name + "-category-active"}
         />
       ));
@@ -48,8 +51,9 @@ const StructureBlock = ({ categories }) => {
     switch (openGroup.status) {
       default:
         break;
-      case "structure":
+      case "structure": {
         return <EditStructure editGroup={setGroup} />;
+      }
       case CATEGORY.STATUS.EDIT:
         return <EditGroup group={openGroup} editGroup={setGroup} />;
       case CATEGORY.STATUS.STARTCOMPLETE:
@@ -81,19 +85,27 @@ const StructureBlock = ({ categories }) => {
       </div>
       <h3>
         <span
-          className={current === tabs.ACTIVE ? "tab-active" : "tab-inactive"}
+          className={
+            current === tabs.ACTIVE
+              ? str_class.tab_active
+              : str_class.tab_inactive
+          }
           onClick={() => setCurrent(tabs.ACTIVE)}
         >
           Categories active
         </span>
         <span
-          className={current === tabs.COMPLETED ? "tab-active" : "tab-inactive"}
+          className={
+            current === tabs.COMPLETED
+              ? str_class.tab_active
+              : str_class.tab_inactive
+          }
           onClick={() => setCurrent(tabs.COMPLETED)}
         >
           Completed categories
         </span>
       </h3>
-      <div className="content-block">{content(current)}</div>
+      <div className="">{content(current)}</div>
     </ErrorBoundary>
   );
 };

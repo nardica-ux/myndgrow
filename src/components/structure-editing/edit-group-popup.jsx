@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../structure-container/structure.scss";
+import app_class from "../app/App.module.scss";
+
 import { connect } from "react-redux";
 import AppButton from "../app-small-components/app-button-component";
 import colors from "../app/app-style.scss";
@@ -31,7 +32,7 @@ const EditGroup = ({ group, update_category_start, editGroup }) => {
 
   return (
     <form
-      className="app-form"
+      className={app_class.app_form}
       onSubmit={(e) => {
         e.preventDefault();
         update_category_start({

@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "../app/app-style.scss";
+import css_const from "../app/app-style.scss";
+import app_class from "../app/App.module.scss";
 
 const AppButton = ({
   callFunc,
@@ -14,21 +15,25 @@ const AppButton = ({
 }) => (
   <button
     type
-    className="app-button"
+    className={app_class.app_button}
     style={{
       position,
       right: position === "absolute" ? 10 : null,
       padding:
         size === "large"
-          ? `${styles.norm}px ${styles.large}px`
-          : `${styles.small}px ${styles.norm}px`,
+          ? `${css_const.norm}px ${css_const.large}px`
+          : `${css_const.small}px ${css_const.norm}px`,
       margin:
-        size === "large" ? `${styles.large}px auto` : `${styles.small}px auto`,
+        size === "large"
+          ? `${css_const.large}px auto`
+          : `${css_const.small}px auto`,
       fontSize:
-        size === "large" ? `${styles.medium_font}` : `${styles.norm_font}`,
+        size === "large"
+          ? `${css_const.medium_font}`
+          : `${css_const.norm_font}`,
       fontWeight: size === "large" ? null : 500,
-      backgroundColor: disabled ? styles.inactive_color : color,
-      color: theme === "light" ? styles.text_color : styles.main_color,
+      backgroundColor: disabled ? css_const.inactive_color : color,
+      color: theme === "light" ? css_const.text_color : css_const.main_color,
       cursor: disabled ? null : "pointer",
       ...styleObj,
     }}

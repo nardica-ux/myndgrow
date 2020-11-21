@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import "../structure-container/structure.scss";
+import app_class from "../app/App.module.scss";
+import str_class from "../structure-container/structure.module.scss";
 import ToggleThing from "../app-small-components/toggle-component";
-import "./category-done.scss";
+import done_class from "./category-done.module.scss";
 import AppButton from "../app-small-components/app-button-component";
 import AppTextArea from "../app-small-components/textarea-component";
 
@@ -34,7 +35,6 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
     let newText = JSON.stringify(updateStory);
     let oldTExt = JSON.stringify(init);
     if (newText.length !== oldTExt.length || oldTExt !== newText) {
-      console.log({ ...data, ...updateStory });
       update_user_story_async({
         ...data,
         ...updateStory,
@@ -93,7 +93,7 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
     points.map((el, i) => (
       <div
         key={name + i}
-        className="done-points"
+        className={done_class.done_points}
         style={{ backgroundColor: color, width: el * 3 + "%" }}
       >
         {el}
@@ -116,11 +116,13 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
   };
 
   return (
-    <div className="card-container structure-card fullwid">
-      <div className="flex-half">
+    <div
+      className={`${app_class.card_container} ${str_class.structure_card} ${done_class.fullwid}`}
+    >
+      <div className={done_class.flex_half}>
         <h4
           style={{ backgroundColor: color, color: "white", width: "90%" }}
-          className="structure-group-title"
+          className={str_class.structure_group_title}
         >
           {name}: DONE
           <AppButton
@@ -142,12 +144,11 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
           <h4>POINTS: </h4>
           {pointsBar()}{" "}
           <div
-            className="done-points"
+            className={done_class.done_points}
             style={{
-              backgroundColor: color,
-              color: "white",
               textAlign: "center",
               padding: "0 8px",
+              backgroundColor: color,
             }}
           >
             = {sum(points)}
@@ -169,7 +170,7 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
           size="small"
         />
       </div>
-      <div className="flex-half">
+      <div className={done_class.flex_half}>
         <h4>GOAL: {goal}</h4>
         {lineWrapper(newOnGoal, "comments on goal: ", setOnGoal)}
 
@@ -198,7 +199,11 @@ const DoneCard = ({ own_id, user_stories, update_user_story_async }) => {
       </div>
       {commentShow
         ? comments.map((comm, i) => (
-            <div className="comments" key={name + i} style={{ width: "96%" }}>
+            <div
+              className={app_class.comments}
+              key={name + i}
+              style={{ width: "96%" }}
+            >
               {comm}
             </div>
           ))

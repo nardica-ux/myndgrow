@@ -1,4 +1,4 @@
-.category-chip {
+.category_chip {
   display: flex;
   margin: 20px 0;
   justify-content: center;
@@ -9,4 +9,11 @@
     text-transform: uppercase;
     cursor: pointer;
   }
+}
+.add_box {
+  margin: auto;
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }

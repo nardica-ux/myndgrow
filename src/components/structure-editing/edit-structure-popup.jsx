@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../structure-container/structure.scss";
+import "../structure-container/structure.module.scss";
+import app_class from "../app/App.module.scss";
 import { connect } from "react-redux";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import { add_category } from "../../redux/categories/category-actions";
@@ -7,7 +8,7 @@ import ColorSelect from "./color-picker-select";
 import AppButton from "../app-small-components/app-button-component";
 import { update_category_start } from "../../redux/categories/category-actions";
 import AppInput from "../app-small-components/app-input-component";
-import "./structure-edit.scss";
+import edit_class from "./structure-edit.module.scss";
 
 const EditStructure = ({
   categories,
@@ -48,7 +49,7 @@ const EditStructure = ({
   };
 
   const content = categories.map((el, i) => (
-    <li key={el.name + "-structure"} className="category-chip">
+    <li key={el.name + "-structure"} className={edit_class.category_chip}>
       <ColorSelect
         activeColor={el.color}
         name={el.name}
@@ -64,7 +65,7 @@ const EditStructure = ({
       <DeleteOutlineIcon
         htmlColor={el.color}
         fontSize="small"
-        className="materail-icons"
+        className={app_class.material_icons}
         style={{ marginRight: 16 }}
         onClick={() => console.log(el)}
       />
@@ -138,7 +139,7 @@ const EditStructure = ({
   );
 
   return (
-    <form className="app-form">
+    <form className={app_class.app_form}>
       <p style={{ width: "100%", margin: "0 auto", fontSize: 12 }}>
         here you can add/delete or change a color for a category
       </p>

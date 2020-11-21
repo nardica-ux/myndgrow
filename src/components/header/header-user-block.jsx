@@ -2,7 +2,8 @@ import React from "react";
 import { auth } from "../../firebase/firebase-root";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "./header.scss";
+import app_class from "./header.module.scss";
+import colors from "../app/app-style.scss";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import AppButton from "../app-small-components/app-button-component";
@@ -20,6 +21,7 @@ const HeaderUserBlock = ({
 
   const loginButton = (
     <AppButton
+      color={colors.secondary_color}
       toggleText={user ? "LogOut" : "LogIn"}
       callFunc={() => {
         user ? auth.signOut() : startLogging(true);
@@ -27,11 +29,11 @@ const HeaderUserBlock = ({
     />
   );
   const userBlock = () => (
-    <div className="header-block-mobile">
+    <div className={app_class.header_block_mobile}>
       <div>Hi, {user.displayName}</div>
       <AppButton
         toggleText=" Add Entry +"
-        color={"yellowgreen"}
+        color={colors.accent_color}
         theme="light"
         callFunc={() => history.push("/add-entry")}
       />
@@ -40,7 +42,7 @@ const HeaderUserBlock = ({
       <AppButton
         toggleText="reload"
         type="button"
-        color="darkblue"
+        color={colors.link_color}
         callFunc={() => refresh_entries_redux(user)}
       />
 

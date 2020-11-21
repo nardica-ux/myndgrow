@@ -1,30 +1,31 @@
 import React from "react";
+import app_class from "../app/App.module.scss";
 import EditIcon from "@material-ui/icons/Edit";
 import { connect } from "react-redux";
-import "./structure.scss";
+import str_class from "./structure.module.scss";
 import PropTypes from "prop-types";
 
-const StructureCard = ({ editGroup, fetching, category }) => {
+const StructureCard = ({ setGroup, fetching, category }) => {
   const { color, name, sub_groups, goal, question, own_id } = category;
 
   return (
     <div
-      className="card-container structure-card"
+      className={`${app_class.card_container} ${str_class.structure_card}`}
       style={{ backgroundColor: fetching === own_id ? "wheat" : null }}
     >
       <div style={{ width: "60%", textAlign: "left" }}>
         <h4
           style={{ backgroundColor: color, color: "white" }}
-          className="structure-group-title"
+          className={str_class.structure_group_title}
         >
           <EditIcon
-            className="material-icons"
+            className={app_class.material_icons}
             style={{
               border: "1px solid white",
               borderRadius: 4,
               float: "right",
             }}
-            onClick={() => editGroup({ ...category, status: "edit" })}
+            onClick={() => setGroup({ ...category, status: "edit" })}
           />
           {name}
         </h4>
@@ -39,7 +40,7 @@ const StructureCard = ({ editGroup, fetching, category }) => {
           {question}
         </p>
       </div>
-      <div className="topic-container">
+      <div className={str_class.topic_container}>
         <h4 style={{ color }}>Topics</h4>
         {sub_groups && sub_groups.length
           ? sub_groups.map((el, i) => (
@@ -64,5 +65,5 @@ StructureCard.propTypes = {
     name: PropTypes.string.isRequired,
     sub_groups: PropTypes.array,
   }),
-  editGroup: PropTypes.func.isRequired,
+  setGroup: PropTypes.func.isRequired,
 };

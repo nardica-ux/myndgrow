@@ -7,6 +7,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import AppModal from "../app-small-components/modal-component";
 import { delete_entry } from "../../redux/entry-actions";
 import EntryInputComponent from "../entry-components/detail-state-entry-";
+import { CLASSES } from "../app/CONSTANTS";
 
 const ChartBlock = ({ text, delete_entry, theme, color, entry }) => {
   const [editing, setEdit] = useState(false);

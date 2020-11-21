@@ -23,7 +23,7 @@ h3 {
   font-weight: 300;
 }
 
-.material-icons {
+.material_icons {
   font-family: "Material Icons";
   font-size: $xlarge-font;
   display: inline-block;
@@ -50,7 +50,7 @@ h3 {
   }
 }
 
-.app-button {
+.app_button {
   border: none;
   padding: $xsmall $small;
   border-radius: $xsmall;
@@ -70,11 +70,11 @@ h3 {
     outline: none;
   }
 }
-.content-block {
+.content_block {
   @include simpleflex();
   align-items: flex-start;
 }
-.card-container {
+.card_container {
   position: relative;
   background-color: $main-color;
   min-height: 100px;
@@ -88,11 +88,11 @@ h3 {
   animation: unfoldVert 0.3s;
   transform-origin: top;
   transition: height 0.8s linear;
-  & + .limited-height {
+  & + .limited_height {
     height: 480px;
     overflow: hidden;
   }
-  & .unfold-button {
+  & .unfold_button {
     position: absolute;
     bottom: 0;
     height: 80px;
@@ -118,12 +118,12 @@ h3 {
     flex-direction: column;
     align-items: stretch;
   }
-  .card-container {
+  .card_container {
     margin-right: 36px;
   }
 }
 @media screen and (max-width: 480px) {
-  .card-container {
+  .card_container {
     flex-direction: column;
     align-items: center;
   }
@@ -148,18 +148,11 @@ h3 {
     opacity: 0;
   }
 }
-.animate-closure {
+.animate_closure {
   animation: fold 0.4s;
 }
-@keyframes dissolve {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.close-chip {
+
+.close_chip {
   position: absolute;
   padding: 10px;
   border-radius: 30px;
@@ -183,7 +176,7 @@ h3 {
     font-weight: 500;
   }
 }
-.card-icons {
+.card_icons {
   margin-right: 4px;
   margin-bottom: -5px;
 }

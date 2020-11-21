@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import "./App.scss";
+import app_class from "./App.module.scss";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
@@ -77,7 +77,7 @@ function App({
   ));
 
   return (
-    <div className="App">
+    <div className={app_class.App}>
       <Header pages={pages} user={user} />
       <Switch>{pagesComponents}</Switch>
     </div>

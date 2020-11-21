@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./contact.scss";
+import app_class from "../app/App.module.scss";
+import contact_class from "./contact.module.scss";
 
 /* <span style={selectedBlock === i && selected.length ? { opacity: 1 } : null}>
   hello
@@ -33,7 +34,7 @@ const ContactForm = () => {
   console.log(text);
   const renderPara = (elem) => {
     return (
-      <div className={`marked-div`}>
+      <div className={contact_class.marked_div}>
         {elem.map((el) => (
           <span style={{ backgroundColor: el.color }}>{el.text}</span>
         ))}
@@ -46,7 +47,7 @@ const ContactForm = () => {
 
   const handleSelect = () => {
     let obj = document.getSelection();
-    let thisSelect = console.log(obj.selectionStart);
+    console.log(obj.selectionStart);
     let num = parseInt(obj.anchorNode.id);
     let string = obj.toString();
     let eltext = text[num][0].text;
@@ -76,29 +77,38 @@ const ContactForm = () => {
     <div>
       <input onSelect={(e) => console.log(e)} value={"test select"} />
       {text.map((el, i) => (
-        <div className="text-container" id={i}>
-          <div key={"block-" + i} className="under-div">
+        <div className={contact_class.text_container} id={i}>
+          <div key={"block-" + i} className={contact_class.under_div}>
             {renderPara(el)}
           </div>
           <textarea
-            className="text-edit"
+            className={contact_class.text_edit}
             onSelect={() => handleSelect()}
             value={el.map((el) => el.text).join("")}
           />
           <div
-            className="pop-up-mark"
+            className={contact_class.pop_up_mark}
             style={
               selectedBlock === i && selected.length ? { opacity: 1 } : null
             }
           >
             hello
-            <div className={"close-chip"} onClick={() => setSelected("")}>
+            <div
+              className={app_class.close_chip}
+              onClick={() => setSelected("")}
+            >
               X
             </div>
-            <div className={"close-chip"} onClick={() => handleMark("green")}>
+            <div
+              className={app_class.close_chip}
+              onClick={() => handleMark("green")}
+            >
               G
             </div>
-            <div className={"close-chip"} onClick={() => handleMark("red")}>
+            <div
+              className={app_class.close_chip}
+              onClick={() => handleMark("red")}
+            >
               R
             </div>
           </div>

@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   max-width: 95%;
   padding-top: 0;
-  & .flex-half {
+  & .flex_half {
     width: 49%;
     text-align: left;
     & h4 {
@@ -15,13 +15,12 @@
     }
   }
 }
-.done-points {
+.done_points {
   content: "";
   border-radius: 4px;
   height: 24px;
   margin-left: 5px;
   margin-top: 18px;
-  color: steelblue;
   color: white;
   text-align: center;
 }

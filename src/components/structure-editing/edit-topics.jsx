@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../structure-container/structure.scss";
+import app_class from "../app/App.module.scss";
 import AppInput from "../app-small-components/app-input-component";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import AddNewTopic from "./add-new-topic";
@@ -54,7 +54,7 @@ const TopicsInput = ({ sub_groups, color, setSubGroups }) => {
           <DeleteOutlineIcon
             htmlColor={color}
             fontSize="small"
-            className="materail-icons"
+            className={app_class.material_icons}
             style={{ marginTop: 20, marginLeft: 30 }}
             onClick={() => setTopics({ ...topics, [i]: "to delete" })}
           />

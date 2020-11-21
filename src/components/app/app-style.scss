@@ -24,6 +24,8 @@ $small: 12px;
 $norm: 24px;
 $large: 32px;
 
+$theme_dark: dark;
+
 @mixin shade() {
   box-shadow: 3px 3px 12px $shadow_color;
 }
@@ -33,8 +35,10 @@ $large: 32px;
 }
 
 :export {
+  theme_dark: $theme_dark;
   base_color: $base_color;
   text_color: $text_color;
+  link_color: $link_color;
   accent_color: $accent_color;
   secondary_color: $secondary_color;
   next_color: $next_color;

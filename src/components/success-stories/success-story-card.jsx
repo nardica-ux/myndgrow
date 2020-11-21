@@ -1,18 +1,12 @@
 import React, { useState } from "react";
+import style from "../app/App.module.scss";
 import "./success-story.scss";
-import StoryCardExpanded from './success-story-expanded'
+import StoryCardExpanded from "./success-story-expanded";
 
 const SuccessStoryCard = ({ storyData }) => {
   const [expanded, toggleExpanded] = useState(false);
 
-  const {
-    user_name,
-    title,
-    img_ava,
-    color,
-    on_project,
-    on_goal,
-  } = storyData;
+  const { user_name, title, img_ava, color, on_project, on_goal } = storyData;
 
   let contentShort = (
     <div>
@@ -24,27 +18,30 @@ const SuccessStoryCard = ({ storyData }) => {
       </p>
     </div>
   );
-const cardheader = (
-  <h3
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-    }}
-  >
-    {title}
-    {user_name ? (
-      <span style={{ color, marginLeft: "auto" }}>
-        {user_name}
-        <img src={`${img_ava}`} alt="ava" className="card-ava" />
-      </span>
-    ) : (
-      " by someone "
-    )}
-  </h3>
-);
+  const cardheader = (
+    <h3
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      {title}
+      {user_name ? (
+        <span style={{ color, marginLeft: "auto" }}>
+          {user_name}
+          <img src={`${img_ava}`} alt="ava" className="card-ava" />
+        </span>
+      ) : (
+        " by someone "
+      )}
+    </h3>
+  );
   return (
-    <div className="card-container" style={expanded ? { width: "100%" } : null}>
+    <div
+      className={style.card_container}
+      style={expanded ? { width: "100%" } : null}
+    >
       {cardheader}
       {expanded ? <StoryCardExpanded storyData={{}} /> : contentShort}
       <span

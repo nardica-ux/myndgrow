@@ -1,4 +1,5 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
+import app_class from "../app/App.module.scss";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import ChartGroupView from "../chart-groups/chart-group-vew";
@@ -16,23 +17,23 @@ const GraphCard = ({ num, groupped = false }) => {
   }, []);
 
   const bottomIcon = limited ? (
-    <div className="unfold-button">
+    <div className={app_class.unfold_button}>
       <KeyboardArrowDownIcon
-        className="material-icons card-icons"
+        className={`${app_class.material_icons} ${app_class.card_icons}`}
         onClick={() => setLimited(!limited)}
       />
     </div>
   ) : (
     <KeyboardArrowUpIcon
-      className="material-icons card-icons"
+      className={`${app_class.material_icons} ${app_class.card_icons}`}
       onClick={() => setLimited(!limited)}
     />
   );
 
   return (
     <div
-      className={`card-container ${
-        limited && height > 550 ? "limited-height" : null
+      className={`${app_class.card_container} ${
+        limited && height > 550 ? app_class.limited_height : null
       }`}
       ref={ref}
     >

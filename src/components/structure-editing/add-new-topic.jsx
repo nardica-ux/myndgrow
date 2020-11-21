@@ -1,19 +1,11 @@
 import React from "react";
-import "../structure-container/structure.scss";
+import edit_class from "./structure-edit.module.scss";
 import AppButton from "../app-small-components/app-button-component";
 import AppInput from "../app-small-components/app-input-component";
 
 const AddNewTopic = ({ handleAddNew, newTopic, color, addNewTopic }) => {
   return (
-    <div
-      style={{
-        margin: "auto",
-        marginTop: 16,
-        display: "flex",
-        alignItems: "flex-end",
-        flexWrap: "wrap",
-      }}
-    >
+    <div className={edit_class.add_box}>
       <AppInput
         getValue={newTopic}
         color={color}

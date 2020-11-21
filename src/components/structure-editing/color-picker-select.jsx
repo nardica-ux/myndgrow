@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../app/App.scss";
+import "../app/App.module.scss";
 
 const colors = [
   "darkred",

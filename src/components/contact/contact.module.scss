@@ -1,11 +1,11 @@
-.text-container {
+.text_container {
   position: relative;
   -webkit-text-size-adjust: none;
   box-sizing: border-box;
 }
-.text-container,
-.under-div,
-.text-edit {
+.text_container,
+.under_div,
+.text_edit {
   width: 600px;
   height: 100px;
   margin: 0;
@@ -14,12 +14,12 @@
   word-wrap: none;
   word-break: none;
 }
-.under-div {
+.under_div {
   position: absolute;
   left: 0;
   top: 0;
 }
-.marked-div {
+.marked_div {
   color: transparent;
   opacity: 0.3;
   text-align: left;
@@ -27,7 +27,7 @@
   word-wrap: none;
   word-break: none;
 }
-.text-edit {
+.text_edit {
   letter-spacing: 0.3px;
   position: absolute;
   padding: 0;
@@ -46,7 +46,7 @@ mark {
   color: transparent;
   background-color: #b1d5e5;
 }
-.pop-up-mark {
+.pop_up_mark {
   opacity: 0;
   min-width: 200px;
   min-height: 60px;
@@ -57,7 +57,7 @@ mark {
   top: -70px;
   left: 200px;
   transition: opacity 0.3s 0.2s;
-  & .close-chip {
+  & .close_chip {
     position: relative;
     border-radius: 12px;
     padding: 6px;

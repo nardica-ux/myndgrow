@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
+
+import app_class from "../app/App.module.scss";
 import ReactDOM from "react-dom";
 import AppButton from "../app-small-components/app-button-component";
-import "./modal.scss";
+import modal_class from "./modal.module.scss";
 
 const AppModal = (props) => {
   const { getmodalclosed, title, modalWidth = "70%" } = props;
@@ -15,27 +17,28 @@ const AppModal = (props) => {
 
   const handleClose = () => {
     setTimeout(() => {
-      el.classList.remove("animate-closure");
-      backdrop.classList.remove("animate-closure");
+      el.classList.remove(app_class.animate_closure);
+      backdrop.style.animation = "none";
       getmodalclosed(false);
-    }, 350);
+    }, 550);
     let el = document.getElementById("edit-group");
-    let backdrop = document.querySelector(".popup-blur");
+    let backdrop = document.getElementById("backdrop");
     backdrop.style.animation = "dissolve .6s forwards";
-    el.classList.add("animate-closure");
+    el.classList.add(app_class.animate_closure);
   };
 
   return props.open
     ? ReactDOM.createPortal(
         <div
-          className="popup-blur"
+          className={modal_class.popup_blur}
+          id={"backdrop"}
           onClick={(e) => {
             if (!ref.current.contains(e.target)) handleClose();
           }}
         >
           <div
             ref={ref}
-            className="card-container"
+            className={app_class.card_container}
             style={{ maxWidth: modalWidth, flexWrap: "wrap" }}
             id="edit-group"
           >

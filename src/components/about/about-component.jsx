@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "../app/App.module.scss";
 import "./about.scss";
 import Intro from "../../source-texts/intro";
 import { paragraphs } from "../../source-texts/about-text";
@@ -22,7 +23,7 @@ const About = ({}) => {
       <h3 style={{ width: "100%" }}>How MyndGrow works</h3>
       {paragraphs.map(({ icon, subtitle, text, link }, i) => (
         <div
-          className="card-container"
+          className={style.card_container}
           key={subtitle + "-how"}
           style={{ boxShadow: "none", textAlign: "left" }}
         >

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./header.scss";
+import style from "./header.module.scss";
 import { pages } from "../app/pages";
 import HeaderNavBlock from "./header-nav-block";
 import LogInGeneral from "../signin-and-up/login-general-component";
@@ -55,14 +55,14 @@ const Header = ({ user }) => {
   }, [user]);
 
   return (
-    <header className="App-header">
+    <header className={style.App_header}>
       <ErrorBoundary>
         <HeaderStyleBlock
           open={open}
           compact={compact}
           toggleOpenNav={toggleOpenNav}
         />
-        <p style={{ fontSize: 10 }}>
+        <p className={style.test}>
           Env={process.env.REACT_APP_ENV}, build=
           {process.env.REACT_APP_BUILD_NUM}
         </p>
