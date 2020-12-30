@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ToggleThing from "../app-small-components/toggle-component";
-import "./success-story.scss";
+import el_class from "./success-story.module.scss";
 import Bullet from "../app-small-components/bullet";
 
 const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
@@ -20,30 +20,17 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
     return sum;
   };
 
-  const topicPoints = () => {
-    let sub_groupsObj = {};
-    for (let i = 0; i < topic_points.length; i++) {
-      let el = Object.entries(topic_points[i]);
-      sub_groupsObj.hasOwnProperty(el[0])
-        ? sub_groupsObj[el[0]].push(el[1])
-        : (sub_groupsObj[el[0]] = [el[1]]);
-    }
-    return sub_groupsObj;
-  };
-  // const topicValues = topicPoints();
-
   return (
-    <div className="diagram-container">
+    <div className={el_class.diagram_container}>
       <div>
-        <p className="card-text">Points Total: {sum(points)}</p>
-        <p className="card-text">
+        <p className={el_class.card_text}>Points Total: {sum(points)}</p>
+        <p className={el_class.card_text}>
           sub_groups:
           {sub_groups.map((el) => (
             <span
               style={{ color, borderColor: color, display: "inline-block" }}
             >
               {el}
-              {/* {topicValues[el] ? sum(topicValues[el]) : 0} */}
             </span>
           ))}
         </p>
@@ -52,13 +39,12 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
           state={commentsShown}
           size="small"
           label={commentsShown ? "hide notes" : "show notes"}
-          margin={"margin-right: auto"}
         />
       </div>
-      <div className="dia-card">
+      <div className={el_class.dia_card}>
         {pointsGrow.map((el, i) => (
           <div
-            className="dia-chartbar"
+            className={el_class.dia_chartbar}
             key={"chart-" + i}
             style={{
               height: el * 2 * scale,
@@ -67,7 +53,7 @@ const SuccessStoryDiagram = ({ diadata, scale = 1 }) => {
               width: 8 * (1 + scale / 4),
             }}
           >
-            <p style={{ color }} className="chart-points">
+            <p style={{ color }} className={el_class.chart_points}>
               {points[i]}
             </p>
             <span>{diadata.comments ? diadata.comments[i] : ""}</span>

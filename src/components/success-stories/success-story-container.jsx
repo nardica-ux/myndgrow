@@ -1,40 +1,21 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import SuccessStoryCard from "./success-story-card.jsx";
-// import { stories } from "./story-sample";
-
-const Tabs = (arr, func, current) => (
-  <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
-    {arr.map((el, i) => (
-      <div
-        key={"tab-" + i}
-        style={{
-          margin: 10,
-          padding: 10,
-          textTransform: "uppercase",
-          color: current === i ? "red" : null,
-          cursor: current === i ? null : "pointer",
-        }}
-        onClick={() => func(i)}
-      >
-        {el}
-      </div>
-    ))}
-  </div>
-);
+import Tabs from "../app-small-components/tab-menu";
 
 const SuccessStoryContainer = ({ user_stories, public_stories }) => {
   const [active, setActive] = useState(0);
-
+  const tabNames = ["public", "own"];
   let stories;
   active === 0 ? (stories = public_stories) : (stories = user_stories);
-  if (!stories || !stories.length) return null;
+  if (!stories || !stories.length) return <div>no stories yet</div>;
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {Tabs(["public", "own"], setActive, active)}
+      <Tabs arr={tabNames} func={setActive} current={active} />
       {stories.map((el, i) => (
         <SuccessStoryCard
+          key={"success-" + i}
           storyData={el}
           active={active}
           setActive={setActive}

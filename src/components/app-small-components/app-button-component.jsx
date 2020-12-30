@@ -14,7 +14,7 @@ const AppButton = ({
   theme,
 }) => (
   <button
-    type
+    type={type}
     className={app_class.app_button}
     style={{
       position,

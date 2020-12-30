@@ -1,17 +1,11 @@
 import React from "react";
 import logo from "./mynd-grow-logo.png";
+import style from "./header.module.scss";
 
 const HeaderStyleBlock = ({ open, compact }) => (
-  <div className="header-style-block">
+  <div className={style.header_style_block}>
     <h2> MyndGrow </h2>
-    {!compact || open ? (
-      <img
-        src={logo}
-        style={{ marginLeft: -20 }}
-        alt={"myndGrow logo"}
-        className="header-logo"
-      />
-    ) : null}
+    {!compact || open ? <img src={logo} alt={"myndGrow logo"} /> : null}
   </div>
 );
 

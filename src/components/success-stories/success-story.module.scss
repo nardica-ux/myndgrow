@@ -1,26 +1,27 @@
-.card-ava {
+.card_ava {
   width: 32px;
   height: auto;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: -12px;
+  float: right;
+  margin-left: 10px;
 }
-.success-story-expand {
+.success_story_expand {
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
 }
-.diagram-container {
+.diagram_container {
   width: 96%;
   margin: 2%;
 }
-.dia-card {
+.dia_card {
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
-.card-text {
+.card_text {
   text-align: left;
   & span {
     padding: 0px 4px;
@@ -30,7 +31,7 @@
     border-style: solid;
   }
 }
-.dia-chartbar {
+.dia_chartbar {
   margin: 3px;
   border-radius: 4px;
   border: 2px solid white;
@@ -42,7 +43,7 @@
   &:hover {
     border-color: yellowgreen;
   }
-  & .chart-points {
+  & .chart_points {
     margin-top: -20px;
   }
   & span {

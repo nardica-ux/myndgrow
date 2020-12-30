@@ -34,7 +34,6 @@ const Header = ({ user }) => {
   }, [compact]);
 
   useEffect(() => {
-    // window.addEventListener("resize", updateWindowDimensions);
     let nav = [];
     if (user) {
       nav = pages.filter((el) => !forLoggedOnly.includes(el.name));
@@ -51,7 +50,6 @@ const Header = ({ user }) => {
       history.push("/about");
       setActive("/about");
     }
-    // return () => window.removeEventListener("resize", updateWindowDimensions);
   }, [user]);
 
   return (
@@ -62,7 +60,7 @@ const Header = ({ user }) => {
           compact={compact}
           toggleOpenNav={toggleOpenNav}
         />
-        <p className={style.test}>
+        <p style={{ fontSize: 12, textAlign: "center" }}>
           Env={process.env.REACT_APP_ENV}, build=
           {process.env.REACT_APP_BUILD_NUM}
         </p>

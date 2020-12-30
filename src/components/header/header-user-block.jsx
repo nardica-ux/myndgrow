@@ -39,13 +39,6 @@ const HeaderUserBlock = ({
       />
 
       {loginButton}
-      <AppButton
-        toggleText="reload"
-        type="button"
-        color={colors.link_color}
-        callFunc={() => refresh_entries_redux(user)}
-      />
-
       {compact ? (
         <CloseIcon
           className="material-icons"
